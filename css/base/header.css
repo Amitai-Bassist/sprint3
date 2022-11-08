@@ -1,0 +1,26 @@
+.app-footer, .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    background-color: rgb(190, 191, 190);
+    padding: 10px;
+}
+
+.app-header nav {
+    display: flex;
+    gap: 10px;
+}
+
+nav a{
+    color: black;
+}
+
+.router-link-exact-active {
+    color: rgb(25, 29, 137);
+}
+
+.app-footer{
+    justify-content: center;
+    text-align: center;
+}
