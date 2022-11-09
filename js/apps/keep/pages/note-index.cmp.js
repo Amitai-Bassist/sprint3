@@ -10,19 +10,12 @@ export default {
     template:`
     <main class="note-app-main grid">
         <aside>
-            <div>Notes</div>
+            <router-link to="/notes/show-nots">Notes</router-link>
             <div>Reminders</div>
             <div>Archive</div>
             <div>Bin</div>
         </aside>
         <router-view />
-        <section class="note-app">
-            <h1>note-app</h1>
-            <note-filter></note-filter>
-            <note-add></note-add>
-            <note-list :notes="notes"></note-list>
-    
-        </section>
     </main>
     `,
     name: 'note-index',

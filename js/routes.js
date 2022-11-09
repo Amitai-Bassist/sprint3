@@ -10,7 +10,8 @@ import aboutGoals from './views/about-goals.cmp.js'
 import mailInbox from './apps/mail/pages/mail.inbox.cmp.js'
 import mailStarred from './apps/mail/pages/mail.starred.cmp.js'
 import mailSent from './apps/mail/pages/mail.sent.cmp.js'
-import showNote from './apps/keep/pages/note-index.cmp.js'
+import showNots from './apps/keep/pages/show-nots.cmp.js'
+import mailCompose from './apps/mail/pages/mail-compose.cmp.js'
 
 
 
@@ -52,8 +53,8 @@ const routerOptions = {
             component: noteIndex,
             children: [
                 {
-                    path: 'show-notes',
-                    component: showNote,
+                    path: 'show-nots',
+                    component: showNots,
                 },
                 // {
                 //     path: 'starred',

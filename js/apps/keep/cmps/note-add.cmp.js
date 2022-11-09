@@ -3,7 +3,12 @@ import noteButtens from '../cmps/note-buttens.cmp.js'
 export default {
     template: `
     <section class="add-note-section">
-        <input @focus="isOver=true" type="text" placeholder="add"/>
+        <form @submit.prevent="addNote" action="">
+            <input v-if="isOver" type="text" placeholder="Title"/>
+            <input @focus="isOver=true" type="text" placeholder="add"/>
+            <button>save</button>
+        </form>
+        <button><i class="fa fa-comment-o fa-2x" aria-hidden="true"></i></button>
         <button><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i></button>
         <button><i class="fa fa-picture-o fa-2x" aria-hidden="true"></i></button>
         <button><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></button>
@@ -12,7 +17,14 @@ export default {
     `,
     data() {
         return {
-            isOver:false
+            isOver:false,
+            title: '',
+            txt: ''
+        }
+    },
+    methods: {
+        addNote(ev){
+            console.log(ev);
         }
     },
     name: 'note-add',

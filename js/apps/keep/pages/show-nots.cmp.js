@@ -1,3 +1,5 @@
+import { notesService } from '../services/note.service.js'
+
 import noteFilter from '../cmps/note-filter.cmp.js'
 import noteAdd from '../cmps/note-add.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
