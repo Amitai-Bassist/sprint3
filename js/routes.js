@@ -16,6 +16,7 @@ import mailCompose from './apps/mail/pages/mail-compose.cmp.js'
 
 
 
+
 const { createRouter, createWebHashHistory } = VueRouter
 
 
@@ -29,24 +30,6 @@ const routerOptions = {
         {
             path: '/email',
             component: mailIndex,
-            children: [
-                {
-                    path: 'compose',
-                    component: mailCompose,
-                },
-                {
-                    path: 'inbox',
-                    component: mailInbox,
-                },
-                {
-                    path: 'starred',
-                    component: mailStarred,
-                },
-                {
-                    path: 'sent',
-                    component: mailSent,
-                },
-            ]
         },
         {
             path: '/notes',
