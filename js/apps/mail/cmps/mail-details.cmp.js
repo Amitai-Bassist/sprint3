@@ -2,7 +2,7 @@ export default {
     props: ['email'],
     template: `
     <section>
-        <ul>
+        <ul class="clean-list">
             <li>from: {{ email.from }}</li>
             <li>to: {{ email.to }}</li>
             <li>Subject: {{ email.subject }}</li>

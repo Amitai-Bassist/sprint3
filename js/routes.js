@@ -7,10 +7,9 @@ import aboutTeam from './views/about-team.cmp.js'
 import aboutGoals from './views/about-goals.cmp.js'
 
 // import mailFolderList from './apps/mail/cmps/mail-folder-list.cmp.js'
-import mailInbox from './apps/mail/pages/mail.inbox.cmp.js'
-import mailStarred from './apps/mail/pages/mail.starred.cmp.js'
-import mailSent from './apps/mail/pages/mail.sent.cmp.js'
+
 import showNote from './apps/keep/pages/note-index.cmp.js'
+
 
 
 
@@ -28,24 +27,6 @@ const routerOptions = {
         {
             path: '/email',
             component: mailIndex,
-            children: [
-                {
-                    path: 'compose',
-                    component: mailCompose,
-                },
-                {
-                    path: 'inbox',
-                    component: mailInbox,
-                },
-                {
-                    path: 'starred',
-                    component: mailStarred,
-                },
-                {
-                    path: 'sent',
-                    component: mailSent,
-                },
-            ]
         },
         {
             path: '/notes',

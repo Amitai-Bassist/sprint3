@@ -4,7 +4,7 @@ import mailDetails from "./mail-details.cmp.js"
 export default {
     props: ['emails'],
     template: `
-        <ul v-if="!showDetailsEmail">
+        <ul class="clean-list" v-if="!showDetailsEmail">
             <li v-for="email in emails" :key="email.id">
                 <mail-preview @showDetails="showDetails" :email="email"/>
             </li>
