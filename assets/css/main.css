@@ -1,5 +1,10 @@
 @import './cmps/header.css';
 @import './cmps/user-msg.css';
+@import './apps/note/note-app.css';
+@import './base/base.css';
+@import './base/forms.css';
+@import './base/helpers.css';
+@import './base/layout.css';
 
 img{
     background-color: black;

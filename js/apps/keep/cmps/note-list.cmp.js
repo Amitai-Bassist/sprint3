@@ -6,15 +6,15 @@ import noteVideo from '../cmps/note-video.cmp.js'
 export default {
     props: ['notes'],
     template: `
-        <section >
-                <div v-for="(note, idx) in notes">
+        <section class="note-container grid">
+                <div class="note"  v-for="(note, idx) in notes">
                     <component :is="note.type"  
-                        :info="note.info" 
+                        :info="note.info" >
                     </component>
                 </div>
         </section>
     `,
-    compnents: {
+    components: {
         noteImg,
         noteTodos,
         noteTxt,

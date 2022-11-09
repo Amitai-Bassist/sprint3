@@ -1,10 +1,15 @@
 export default {
     template: `
     <section>
-        <input type="text" placeholder=""/>
-        <h1>{{info}}</h1>
+        <h1>{{info.title}}</h1>
+        <video src="videoUrl"></video>
     </section>
     `,
     name: 'note-video',
     props: ['info'],
+    computed: {
+        videoUrl(){
+            return this.info.url
+        }
+    }
 }

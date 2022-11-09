@@ -20,6 +20,12 @@
     align-items: center;
 }
 
+/* grid helpers */
+
+.grid{
+    display: grid;
+}
+
 /* text helpers */
 
 .colored-text {

@@ -1,8 +1,9 @@
 export default {
     template: `
-    <section>
-        <input type="text" placeholder=""/>
-        <h1>{{info}}</h1>
+    <section class="note-todos">
+        <ul>
+            <li>{{info.label}}</li>
+        </ul>
     </section>
     `,
     name: 'note-todos',

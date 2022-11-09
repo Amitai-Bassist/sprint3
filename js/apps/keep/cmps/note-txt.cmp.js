@@ -1,8 +1,7 @@
 export default {
     template: `
-          <section>
-              <h1>{{info.txt}}</h1>  
-              <input type="text" />
+          <section class="note-txt">
+              <textarea name="" id="" cols="30" rows="10">{{info.txt}}</textarea>
           </section>
           `,
     props: ['info'],

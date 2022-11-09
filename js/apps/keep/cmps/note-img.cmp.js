@@ -1,10 +1,16 @@
 export default {
     template: `
     <section>
-        <input type="text" placeholder=""/>
-        <h1>{{info}}</h1>
+        <h1>{{info.title}}</h1>
+        <img :src="imgUrl" alt="" />
+        
     </section>
     `,
     name: 'note-img',
     props: ['info'],
+    computed: {
+        imgUrl(){
+            return this.info.url
+        }
+    }
 }

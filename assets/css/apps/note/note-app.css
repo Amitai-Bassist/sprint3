@@ -1,0 +1,8 @@
+.note-container {
+    grid-template-columns: 300px 300px 300px;
+    grid-gap: 10px;
+}
+
+.note{
+    background-color: aqua;
+}
