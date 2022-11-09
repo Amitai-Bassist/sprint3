@@ -1,5 +1,6 @@
 import { emailService } from '../services/email.service.js'
 
+import mailFolderList from '../cmps/mail-folder-list.cmp.js'
 import mailList from '../cmps/mail-list.cmp.js' 
 import mailFilter from '../cmps/mail-filter.cmp.js'
 
@@ -7,8 +8,7 @@ export default {
     template:`
     <section class="email-app">
         <h1>email-app</h1>
-
-        <!-- <button @click="emailsToShow">click</button> -->
+        <mail-folder-list />
 
         <mail-filter @filter="setFilter" :emails="emails"/>
         <mail-list :emails="emailsToShow"/>
@@ -42,12 +42,13 @@ export default {
             if (this.filterBy.read === 'UnRead') {
                 return this.emails.filter(email => email.isRead === false)
             }
-            // return this.emails
+            return this.emails
 
         }
     },
     components: {
         mailList,
         mailFilter,
+        mailFolderList,
     }
 }
