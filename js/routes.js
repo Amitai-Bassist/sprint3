@@ -6,7 +6,6 @@ import aboutPage from './views/about-page.cmp.js'
 import aboutTeam from './views/about-team.cmp.js'
 import aboutGoals from './views/about-goals.cmp.js'
 
-// import mailFolderList from './apps/mail/cmps/mail-folder-list.cmp.js'
 import showNots from './apps/keep/pages/show-nots.cmp.js'
 
 

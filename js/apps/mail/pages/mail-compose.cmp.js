@@ -39,11 +39,8 @@ export default {
             emailService.addEmail(this.email)
                 .then(() => {
                     this.$emit('sended', this.email)
-                    // this.$router.push('/email/inbox/')
                 })
-
-            // emailService.query()
-            //     .then(console.log)
+                
         }
 
     },

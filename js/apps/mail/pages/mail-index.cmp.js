@@ -11,7 +11,7 @@ export default {
         <section class="flex">
             <!-- <mail-folder-list/> -->
             <nav class="flex flex-column">
-                <mail-compose />
+                <mail-compose @sended="saveEmail" />
 
 
 
@@ -39,6 +39,9 @@ export default {
                 .then(emails => {
                     this.emails = emails
                 })
+        },
+        saveEmail(email) {
+            this.emails.unshift(email)
         }
     },
     computed: {
