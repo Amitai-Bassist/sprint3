@@ -1,6 +1,7 @@
 export default {
     props: ['email'],
     template: `
+    <section>
         <ul>
             <li>from: {{ email.from }}, to: {{ email.to }}</li>
             <li>Subject: {{ email.subject }}</li>
@@ -10,5 +11,7 @@ export default {
                 Body: {{ email.body }}
             </p></li>
         </ul>
+    </section>
+        
     `,
 }
