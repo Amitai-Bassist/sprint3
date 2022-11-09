@@ -2,6 +2,7 @@ import noteImg from '../cmps/note-img.cmp.js'
 import noteTodos from '../cmps/note-todos.cmp.js'
 import noteTxt from '../cmps/note-txt.cmp.js'
 import noteVideo from '../cmps/note-video.cmp.js'
+import colorsChose from './colors-chose.cmp.js'
 
 
 export default {
@@ -10,9 +11,10 @@ export default {
         <section class="note-container grid">
                 <div  v-for="(note, idx) in notes">
                     <component :is="note.type"  
-                        :info="note.info" >
+                        :info="note.info" v-bind:style="bcgColor(note)">
                     </component>
                 </div>
+                <colors-chose class="colors-for-notes" ></colors-chose>
         </section>
     `,
     data() {
@@ -24,13 +26,20 @@ export default {
         showBottons(ev){
             console.log(ev);
             this.isOver = true
+        },
+        bcgColor(note){
+            return note.style
         }
+    },
+    computed:{
+        
     },
     components: {
         noteImg,
         noteTodos,
         noteTxt,
         noteVideo,
+        colorsChose
         
     }
 }

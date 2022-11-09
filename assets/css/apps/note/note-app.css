@@ -1,6 +1,6 @@
 .note-container {
     margin-top: 20px;
-    grid-template-columns: 350px 350px 350px;
+    grid-template-columns: repeat(auto-fill,300px);
     grid-gap: 19px;
 }
 
@@ -41,5 +41,22 @@
 }
 
 aside{
-    padding-top: 50px;
+    padding-top: 10%;
+    padding-left: 30px;
 }
+
+.colors-for-notes{
+    z-index: 1;
+    display: flex;
+    width: 300px;
+}
+
+.aside-btn{
+    width: 90%;
+    height:70px;
+    grid-template-rows: 90px;
+}
+.aside-btn:hover{
+    background-color: rgb(0 0 0 / 20%);
+}
+

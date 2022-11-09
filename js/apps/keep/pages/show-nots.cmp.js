@@ -9,7 +9,7 @@ export default {
     <section class="note-app">
             <h1>note-app</h1>
             <note-filter></note-filter>
-            <note-add></note-add>
+            <note-add @saved="addNote"></note-add>
             <note-list :notes="notes"></note-list>
     
         </section>
@@ -24,6 +24,14 @@ export default {
             .then(notes => {
                 this.notes = notes
             })
+    },
+    methods: {
+        addNote(){
+            notesService.query()
+            .then(notes => {
+                this.notes = notes
+            })
+        }
     },
     components:{
         noteFilter,

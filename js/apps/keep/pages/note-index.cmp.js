@@ -9,11 +9,12 @@ import noteList from '../cmps/note-list.cmp.js'
 export default {
     template:`
     <main class="note-app-main grid">
-        <aside>
-            <router-link to="/notes/show-nots">Notes</router-link>
-            <div>Reminders</div>
-            <div>Archive</div>
-            <div>Bin</div>
+        <aside class="grid">
+            <!-- <router-link to="/notes/show-nots">Notes</router-link> -->
+            <button class="aside-btn">Notes</button>
+            <button class="aside-btn">Reminders</button>
+            <button class="aside-btn">Archive</button>
+            <button class="aside-btn">Bin</button>
         </aside>
         <router-view />
     </main>

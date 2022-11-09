@@ -8,7 +8,8 @@ export const notesService = {
     remove,
     save,
     getEmptyNote,
-    getNextNoteId
+    getNextNoteId,
+    getGoogleNotesColors
 }
 
 const NOTES_KEY = 'notesDB'
@@ -26,6 +27,9 @@ function getFirstNotes(){
                     { txt: "Driving liscence", doneAt: null }, 
                     { txt: "Coding power", doneAt: 187111111 } 
                 ] 
+            },
+            style: { 
+                backgroundColor: "rgb(242 139 130)" 
             } 
         }, 
         { 
@@ -34,7 +38,10 @@ function getFirstNotes(){
             isPinned: true, 
             info: { 
                 txt: "Fullstack Me Baby!" 
-            } 
+            },
+            style: { 
+                backgroundColor: "rgb(167 255 235)" 
+            }
         }, 
         { 
             id: "n102", 
@@ -44,7 +51,7 @@ function getFirstNotes(){
                 title: "muki and Me" 
             }, 
             style: { 
-                backgroundColor: "#00d" 
+                backgroundColor: "rgb(255 255 255)" 
             } 
         }, 
         { 
@@ -56,7 +63,10 @@ function getFirstNotes(){
                     { txt: "paris", doneAt: null }, 
                     { txt: "london", doneAt: 187111111 } 
                 ] 
-            } 
+            },
+            style: { 
+                backgroundColor: "rgb(255 244 117)" 
+            }
         },
         { 
             id: "n102", 
@@ -66,7 +76,7 @@ function getFirstNotes(){
                 title: "Bobi and Me" 
             }, 
             style: { 
-                backgroundColor: "#00d" 
+                backgroundColor: "rgb(255 244 117)" 
             } 
         },
         { 
@@ -75,10 +85,20 @@ function getFirstNotes(){
             isPinned: false, 
             info: { 
                 txt: "i wish i was a full stack" 
-            } 
+            },
+            style: { 
+                backgroundColor: "rgb(230 201 168)" 
+            }
         }, 
     ]
     return notes
+}
+
+function getGoogleNotesColors(){
+    console.log('colors');
+    return ['rgb(242 139 130)','rgb(251 188 4)','rgb(255 244 117)',
+    'rgb(204 255 144)','rgb(167 255 235)','rgb(203 240 248)','rgb(174 203 250)',
+    'rgb(215 174 251)','rgb(253 207 232)','rgb(230 201 168)','rgb(232 234 237)','rgb(255 255 255)']
 }
 
 
