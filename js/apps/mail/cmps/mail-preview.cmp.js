@@ -2,7 +2,7 @@
 export default {
     props:['email'],
     template:`
-        <ul @click="showDetails(email)">
+        <ul class="clean-list" @click="showDetails(email)">
             <li>from: {{ email.from }}, to: {{ email.to }}</li>
             <li>Subject: {{ email.subject }}</li>
             <li>sentAt: {{ email.sentAt }}</li> <br>

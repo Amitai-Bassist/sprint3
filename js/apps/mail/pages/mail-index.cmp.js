@@ -1,15 +1,21 @@
 import { emailService } from '../services/email.service.js'
 
-import mailFolderList from '../cmps/mail-folder-list.cmp.js'
-import mailList from '../cmps/mail-list.cmp.js' 
+import mailList from '../cmps/mail-list.cmp.js'
 import mailFilter from '../cmps/mail-filter.cmp.js'
+import mailCompose from './mail-compose.cmp.js'
 
 export default {
-    template:`
+    template: `
     <section class="email-app">
         <mail-filter @filter="setFilter" :emails="emails"/>
-        <section class="flex try">
-            <mail-folder-list/>
+        <section class="flex">
+            <!-- <mail-folder-list/> -->
+            <nav class="flex flex-column">
+                <mail-compose />
+
+
+
+            </nav>
             <mail-list :emails="emailsToShow"/>
         </section>
     </section>
@@ -20,21 +26,25 @@ export default {
             filterBy: null
         }
     },
-    created(){
-        emailService.query()
-            .then(emails => {
-                this.emails = emails
-            })
+    created() {
+
+        this.loadEmails()
     },
     methods: {
         setFilter(filterBy) {
             this.filterBy = filterBy
+        },
+        loadEmails() {
+            emailService.query()
+                .then(emails => {
+                    this.emails = emails
+                })
         }
     },
     computed: {
         emailsToShow() {
             console.log(this.filterBy);
-            if (!this.filterBy) return  this.emails
+            if (!this.filterBy) return this.emails
 
             if (this.filterBy.read === 'Read') {
                 return this.emails.filter(email => email.isRead === true)
@@ -43,12 +53,11 @@ export default {
                 return this.emails.filter(email => email.isRead === false)
             }
             return this.emails
-
-        }
+        },
     },
     components: {
         mailList,
         mailFilter,
-        mailFolderList,
+        mailCompose,
     }
 }

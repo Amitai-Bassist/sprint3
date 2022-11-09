@@ -35,17 +35,17 @@ export default {
     },
     methods: {
         sendEmail() {
-            this.email.to = this.email.from = 'me'
+            this.email.to = this.email.from = 'Me'
             emailService.addEmail(this.email)
-                .then(()=> {
-                    emailService.query()
-                    .then(()=> {
-                            this.$router.push('/email/inbox/')
-                        })
+                .then(() => {
+                    this.$emit('sended', this.email)
+                    // this.$router.push('/email/inbox/')
                 })
+
+            // emailService.query()
+            //     .then(console.log)
         }
+
     },
-    watch: {
-        
-    }
+
 }
