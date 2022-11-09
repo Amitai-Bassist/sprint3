@@ -2,16 +2,16 @@ export default {
     props: ['email'],
     template: `
     <section>
-        <ul class="clean-list">
-            <li>from: {{ email.from }}</li>
-            <li>to: {{ email.to }}</li>
-            <li>Subject: {{ email.subject }}</li>
-            <li>sentAt: {{ email.sentAt }}</li> <br>
-            <mail-details :email="email"/>
-            <li><p>
-                Body: {{ email.body }}
-            </p></li>
-        </ul>
+        <article class="details-email">
+            <div class="details-email-from">from: {{ email.from }}</div>
+            <div class="details-email-to">to: {{ email.to }}</div>
+            <div class="details-email-subject">Subject: {{ email.subject }}</div>
+            <div class="details-email-sentAt">sentAt: {{ email.sentAt }}</div> <br>
+            <!-- <mail-details :email="email"/> -->
+            <div class="details-email-body">
+                <p>Body: {{ email.body }}</p>
+            </div>
+        </article>
         <button @click="close">Back</button>
     </section>
     `,

@@ -15,8 +15,8 @@ export default {
                 <button @click="showComsose=!showComsose">Compose</button>
                 <mail-compose v-if="showComsose" @close="closeCompose" @sended="saveEmail" />
                 <button @click="clickInbox">Inbox</button>
-                <button>Starred</button>
-                <button>Sent</button>
+                <button @click="clickStarred">Starred</button>
+                <button @click="clickSent">Sent</button>
 
 
             </nav>
@@ -29,8 +29,8 @@ export default {
             emails: [],
             filterBy: {
                 read: 'All',
-                starred: 'All',
-                Sent: false,
+                starred: null,
+                sent: false,
             },
             showComsose: false,
         }
@@ -39,9 +39,6 @@ export default {
         this.loadEmails()
     },
     methods: {
-        // setFilter(filterBy) {
-        //     this.filterBy = filterBy
-        // },
         loadEmails() {
             emailService.query()
                 .then(emails => {
@@ -58,23 +55,30 @@ export default {
         clickInbox() {
             this.filterBy = {
                 read: 'All',
-                starred: 'All',
-                Sent: false,
+                starred: null,
+                sent: false,
             }
+        },
+        clickSent() {
+            this.filterBy.sent = true
+        },
+        clickStarred() {
+            this.filterBy.starred = true
+            this.filterBy.sent = false
         }
     },
     computed: {
         emailsToShow() {
-            console.log(this.filterBy);
-            if (!this.filterBy) return this.emails
-
-            if (this.filterBy.read === 'Read') {
-                return this.emails.filter(email => email.isRead === true)
+            if (!this.filterBy.starred && this.filterBy.read === 'All' && this.filterBy.sent === false) {
+                return this.emails.filter(email => {
+                    return email.from !== 'Me' || email.from === 'Me' && email.to === 'Me'
+                })
             }
-            if (this.filterBy.read === 'UnRead') {
-                return this.emails.filter(email => email.isRead === false)
-            }
-            return this.emails
+            
+            if (this.filterBy.sent === true) return this.emails.filter(email => email.from === 'Me')
+            if (this.filterBy.starred === true) return this.emails.filter(email => {
+                return (email.from === 'Me' && email.to === 'Me' && email.isStarred === true) || (email.isStarred === true && email.from !== 'Me')
+            })
         },
     },
     components: {
