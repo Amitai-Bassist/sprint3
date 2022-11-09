@@ -8,7 +8,7 @@ export default {
     props: ['notes'],
     template: `
         <section class="note-container grid">
-                <div class="note"  v-for="(note, idx) in notes">
+                <div  v-for="(note, idx) in notes">
                     <component :is="note.type"  
                         :info="note.info" >
                     </component>
