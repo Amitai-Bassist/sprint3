@@ -6,6 +6,7 @@ export default {
         <nav>
             <router-link to="/email/inbox">inbox</router-link> |
             <!-- <router-link to="/about/goals">Goals</router-link> | -->
+            <router-view></router-view>
         </nav>
     `,
 }

@@ -1,5 +1,7 @@
 export default {
     template: `
-        <h1>hello</h1>
+        <section>
+            <h1>hello</h1>
+        </section>
     `,
 }
