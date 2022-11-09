@@ -102,8 +102,8 @@ function save(note) {
     }
 }
 
-function getEmptyNote(vendor='', maxSpeed = 0) {
-    return { id: '', vendor, maxSpeed}
+function getEmptyNote(type='note-txt', info = '',style='white') {
+    return { id: '', type, info: {},style}
 }
 
 
@@ -125,10 +125,10 @@ function _createNotes() {
     return notes
 }
 
-function _createNote(vendor, maxSpeed = 250) {
-    const note = getEmptyNote(vendor, maxSpeed)
-    note.id = utilService.makeId() 
-    return note
-}
+// function _createNote(vendor, maxSpeed = 250) {
+//     const note = getEmptyNote(vendor, maxSpeed)
+//     note.id = utilService.makeId() 
+//     return note
+// }
 
 
