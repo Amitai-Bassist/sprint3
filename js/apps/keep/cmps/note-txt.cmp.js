@@ -3,6 +3,10 @@ import noteButtens from '../cmps/note-buttens.cmp.js'
 export default {
     template: `
           <section @mouseover="isOver = true" @mouseleave="isOver = false" class="note note-txt">
+              <div v-if="isOver">
+                <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click=""><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
+                <div v-if="pin">pin note</div>
+              </div>    
               <textarea name="" id="" cols="24" rows="10">{{info.txt}}</textarea>
               <note-buttens v-if="isOver" ></note-buttens>
           </section>
@@ -10,7 +14,8 @@ export default {
     props: ['info'],
     data() {
       return {
-        isOver: false
+        isOver: false,
+        pin:false
       }
     },
     components: {

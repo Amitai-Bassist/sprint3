@@ -17,7 +17,18 @@ _createNotes()
 function getFirstNotes(){
 
     const notes = [
-         { 
+        { 
+            id: "n103", 
+            type: "note-todos", 
+            info: { 
+                label: "Get my stuff together", 
+                todos: [ 
+                    { txt: "Driving liscence", doneAt: null }, 
+                    { txt: "Coding power", doneAt: 187111111 } 
+                ] 
+            } 
+        }, 
+        { 
             id: "n101", 
             type: "note-txt", 
             isPinned: true, 
@@ -29,8 +40,8 @@ function getFirstNotes(){
             id: "n102", 
             type: "note-img", 
             info: { 
-                url: "http://coding-academy.org/books-photos/20.jpg", 
-                title: "Bobi and Me" 
+                url: "http://coding-academy.org/books-photos/14.jpg", 
+                title: "muki and Me" 
             }, 
             style: { 
                 backgroundColor: "#00d" 
@@ -40,13 +51,32 @@ function getFirstNotes(){
             id: "n103", 
             type: "note-todos", 
             info: { 
-                label: "Get my stuff together", 
+                label: "places to go", 
                 todos: [ 
-                    { txt: "Driving liscence", doneAt: null }, 
-                    { txt: "Coding power", doneAt: 187111111 } 
+                    { txt: "paris", doneAt: null }, 
+                    { txt: "london", doneAt: 187111111 } 
                 ] 
             } 
-        } 
+        },
+        { 
+            id: "n102", 
+            type: "note-img", 
+            info: { 
+                url: "http://coding-academy.org/books-photos/20.jpg", 
+                title: "Bobi and Me" 
+            }, 
+            style: { 
+                backgroundColor: "#00d" 
+            } 
+        },
+        { 
+            id: "n101", 
+            type: "note-txt", 
+            isPinned: false, 
+            info: { 
+                txt: "i wish i was a full stack" 
+            } 
+        }, 
     ]
     return notes
 }
