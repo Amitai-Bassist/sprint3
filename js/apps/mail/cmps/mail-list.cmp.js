@@ -9,7 +9,7 @@ export default {
                 <mail-preview @showDetails="showDetails" :email="email"/>
             </li>
         </ul>
-        <mail-details v-else :email="showDetailsEmail" />
+        <mail-details v-else @close="close" :email="showDetailsEmail" />
     `,
     data() {
         return{
@@ -21,6 +21,9 @@ export default {
             this.showDetailsEmail = email
             console.log(this.showDetailsEmail);
         },
+        close() {
+            this.showDetailsEmail = null
+        }
     }
     ,
     components: {
