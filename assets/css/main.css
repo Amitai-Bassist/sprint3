@@ -9,6 +9,7 @@
 @import './setup/vars.css';
 
 @import './apps/mail/email.compose.css';
+@import './apps/mail/preview-email.css';
 
 img{
     background-color: black;
