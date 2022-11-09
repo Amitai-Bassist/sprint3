@@ -1,4 +1,23 @@
-
 .preview-email {
-    grid-template-columns: 10% 20%;
+    grid-template-columns: 5% 90% 5%;
+    height: 55px;
+    padding: 5px;
+}
+
+.preview-email-contact {
+    grid-template-columns: 23% 33% 32% 12% ;
+
+}
+
+.isStarred {
+    /* background-color: yellow; */
+    color: yellow;
+}
+
+/* .preview-email-subject {
+} */
+
+.isRead {
+    font-weight: bolder;
+    background-color: rgb(214, 215, 215);
 }

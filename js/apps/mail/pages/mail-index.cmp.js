@@ -7,20 +7,16 @@ import mailCompose from './mail-compose.cmp.js'
 export default {
     template: `
     <section class="email-app">
-        <mail-filter  :emails="emails"/>
         <!-- <mail-filter @filter="setFilter" :emails="emails"/> -->
-        <section class="flex">
-            <!-- <mail-folder-list/> -->
-            <nav class="flex flex-column">
+        <section class="email-container">
+            <nav class="email-nav flex flex-column">
                 <button @click="showComsose=!showComsose">Compose</button>
                 <mail-compose v-if="showComsose" @close="closeCompose" @sended="saveEmail" />
                 <button @click="clickInbox">Inbox</button>
                 <button @click="clickStarred">Starred</button>
                 <button @click="clickSent">Sent</button>
-
-
             </nav>
-            <mail-list :emails="emailsToShow"/>
+            <mail-list class="email-list-container" :emails="emailsToShow"/>
         </section>
     </section>
     `,

@@ -2,22 +2,27 @@
 export default {
     props:['email'],
     template:`
-        <article class="preview-email grid" @click="showDetails(email)">
-            <div class="preview-email-star" :class="{isStarred: email.isStarred}"><i class="fa fa-star-o" aria-hidden="true"></i></div>
-            <div class="preview-email-from">from: {{ email.from }} </div>
-            <div class="preview-email-to">to: {{ email.to }} </div>
-            <div class="preview-email-subject">Subject: {{ email.subject }} </div>
-            <div class="preview-email-sentAt">sentAt: {{ email.sentAt }} </div> <br>
-        </article>
+        <div class="preview-email grid">
+            <div class="preview-email-star" ><i @click="email.isStarred=!email.isStarred" class="fa fa-star-o" :class="{isStarred: email.isStarred}" aria-hidden="true"></i></div>
+            <article @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email-contact grid" @click="showDetails(email)">
+                <div class="preview-email-from">{{ email.from }} </div>
+                <div class="preview-email-subject">{{ email.subject }} </div>
+                <div class="preview-email-body"></div>
+                <div class="preview-email-sentAt">{{ email.sentAt }} </div> 
+            </article>
+            <div @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email-trash"><i v-if="isMouseOver" class="fa fa-trash-o" aria-hidden="true"></i></div>
+        </div>
     `,
     data() {
         return {
+            isMouseOver: false
         }
     },
     methods: {
         showDetails() {
             this.$emit('showDetails',this.email)
-        }
+        },
+
     },
     components: {
 

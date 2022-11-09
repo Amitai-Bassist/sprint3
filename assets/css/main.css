@@ -8,6 +8,7 @@
 @import './setup/typography.css';
 @import './setup/vars.css';
 
+@import './apps/mail/email-app.css';
 @import './apps/mail/email.compose.css';
 @import './apps/mail/preview-email.css';
 

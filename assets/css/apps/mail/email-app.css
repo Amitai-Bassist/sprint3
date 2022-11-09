@@ -1,0 +1,8 @@
+
+.email-container {
+    background-color: aquamarin/e;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    gap: 20px;
+}
