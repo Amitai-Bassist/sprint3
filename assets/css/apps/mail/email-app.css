@@ -1,6 +1,6 @@
 
 .email-container {
-    background-color: aquamarin/e;
+    /* background-color: aquamarine; */
     padding: 10px;
     display: grid;
     grid-template-columns: 10% 90%;
