@@ -5,6 +5,8 @@
 @import './base/forms.css';
 @import './base/helpers.css';
 @import './base/layout.css';
+@import './setup/typography.css';
+@import './setup/vars.css';
 
 img{
     background-color: black;

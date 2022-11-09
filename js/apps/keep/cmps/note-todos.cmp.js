@@ -1,8 +1,9 @@
 export default {
     template: `
     <section class="note-todos">
-        <ul>
-            <li>{{info.label}}</li>
+        <h1>{{info.label}}</h1>
+        <ul v-for="(todo, idx) in info.todos">
+            <li>{{todo.txt}}</li>
         </ul>
     </section>
     `,
