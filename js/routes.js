@@ -1,6 +1,6 @@
 
-import emailApp from './views/email-app.cmp.js'
-import notesApp from './views/notes-app.cmp.js'
+import mailIndex from './apps/mail/pages/mail-index.cmp.js'
+import noteIndex from './apps/keep/pages/note-index.cmp.js'
 import homePage from './views/home-page.cmp.js'
 import aboutPage from './views/about-page.cmp.js'
 import aboutTeam from './views/about-team.cmp.js'
@@ -19,11 +19,11 @@ const routerOptions = {
         },
         {
             path: '/email',
-            component: emailApp
+            component: mailIndex
         },
         {
             path: '/notes',
-            component: notesApp
+            component: noteIndex
         },
         {
             path: '/about',
