@@ -2,11 +2,23 @@
 
 export default {
     template: `
-        <!-- <h1>hello from mail folder list</h1> -->
-        <nav>
-            <router-link to="/email/inbox">inbox</router-link> |
-            <!-- <router-link to="/about/goals">Goals</router-link> | -->
+        <nav class="flex flex-column">
+            <router-link to="/email/compose"><button>Compose</button></router-link>
+            <router-link to="/email/inbox">inbox</router-link>
+            <router-link to="/email/starred">starred</router-link> 
+            <router-link to="/email/sent" @click="trys">sent</router-link> 
             <router-view></router-view>
         </nav>
     `,
+    data() {
+        return {
+            // filterBy
+        }
+    },
+    methods: {
+        trys() {
+            console.log('try');
+        }
+    },
+
 }

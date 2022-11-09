@@ -7,11 +7,11 @@ import mailFilter from '../cmps/mail-filter.cmp.js'
 export default {
     template:`
     <section class="email-app">
-        <h1>email-app</h1>
-        <mail-folder-list />
-
         <mail-filter @filter="setFilter" :emails="emails"/>
-        <mail-list :emails="emailsToShow"/>
+        <section class="flex try">
+            <mail-folder-list/>
+            <mail-list :emails="emailsToShow"/>
+        </section>
     </section>
     `,
     data() {

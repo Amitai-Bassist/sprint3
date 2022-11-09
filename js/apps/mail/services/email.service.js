@@ -10,12 +10,20 @@ _createEmails()
 export const emailService = {
     query,
     getEmailById,
+    createEmail,
+    addEmail,
 }
 
 function query() {
     return storageService.query(EMAIL_KEY)
 }
 
+function addEmail(email) {
+    email.isRead = false;
+    email.isStarred = false;
+    email.sentAt = Date.now();
+    return storageService.post(EMAIL_KEY, email)
+}
 
 
 
@@ -23,7 +31,7 @@ function getEmailById(emailId) {
     return storageService.get(EMAIL_KEY, emailId)
 }
 
-function createEmail(subject = null, body = null, isRead = false, isStarred = false, from, to) {
+function createEmail(subject, body, isRead = false, isStarred = false, from, to) {
     const email = {
         id: utilService.makeId(),
         subject,

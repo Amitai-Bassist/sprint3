@@ -22,7 +22,7 @@ function get(entityType, entityId) {
 function post(entityType, newEntity, append = true) {
     newEntity.id = _makeId()
     return query(entityType).then(entities => {
-        append ? entities.push(newEntity) : entities.unshift(newEntity)
+        append ? entities.unshift(newEntity) : entities.unshift(newEntity)
         _save(entityType, entities)
         return newEntity
     })
