@@ -7,12 +7,16 @@ import mailCompose from './mail-compose.cmp.js'
 export default {
     template: `
     <section class="email-app">
-        <mail-filter @filter="setFilter" :emails="emails"/>
+        <mail-filter  :emails="emails"/>
+        <!-- <mail-filter @filter="setFilter" :emails="emails"/> -->
         <section class="flex">
             <!-- <mail-folder-list/> -->
             <nav class="flex flex-column">
-                <mail-compose @sended="saveEmail" />
-
+                <button @click="showComsose=!showComsose">Compose</button>
+                <mail-compose v-if="showComsose" @close="closeCompose" @sended="saveEmail" />
+                <button @click="clickInbox">Inbox</button>
+                <button>Starred</button>
+                <button>Sent</button>
 
 
             </nav>
@@ -23,17 +27,21 @@ export default {
     data() {
         return {
             emails: [],
-            filterBy: null
+            filterBy: {
+                read: 'All',
+                starred: 'All',
+                Sent: false,
+            },
+            showComsose: false,
         }
     },
     created() {
-
         this.loadEmails()
     },
     methods: {
-        setFilter(filterBy) {
-            this.filterBy = filterBy
-        },
+        // setFilter(filterBy) {
+        //     this.filterBy = filterBy
+        // },
         loadEmails() {
             emailService.query()
                 .then(emails => {
@@ -41,7 +49,18 @@ export default {
                 })
         },
         saveEmail(email) {
+            this.showComsose = false
             this.emails.unshift(email)
+        },
+        closeCompose() {
+            this.showComsose = false
+        },
+        clickInbox() {
+            this.filterBy = {
+                read: 'All',
+                starred: 'All',
+                Sent: false,
+            }
         }
     },
     computed: {

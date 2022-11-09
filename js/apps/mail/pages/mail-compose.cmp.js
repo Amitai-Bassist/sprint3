@@ -20,6 +20,7 @@ export default {
                     </div>
                     <div class="email-footer">
                         <button class="sent-btn">Send</button>
+                        <button @click="closeCompose" class="deleate-btn">Deleate</button>
                     </div>
                 </form>
             </div>
@@ -39,8 +40,14 @@ export default {
             emailService.addEmail(this.email)
                 .then(() => {
                     this.$emit('sended', this.email)
+                    this.email = {
+                        subject: '',
+                        body: ''
+                    }
                 })
-                
+        },
+        closeCompose() {
+            this.$emit('close', this.email)
         }
 
     },

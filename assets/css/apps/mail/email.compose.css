@@ -1,0 +1,9 @@
+.email-compose {
+    padding: 10px;
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    width: 75vw;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 15px 5px #000000;
+    left: 20px;
+}
