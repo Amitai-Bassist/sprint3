@@ -28,7 +28,8 @@
 }
 
 .add-note-section{
-    width: 30vw;
+    width: 890px;
+    text-align: center;
 }
 
 .note-btn:hover{
@@ -42,7 +43,7 @@
 
 aside{
     padding-top: 10%;
-    padding-left: 30px;
+    grid-template-rows: 90px 90px 90px 90px;
 }
 
 .colors-for-notes{
@@ -54,9 +55,28 @@ aside{
 .aside-btn{
     width: 90%;
     height:70px;
-    grid-template-rows: 90px;
+    background-color: white;
+    border: none;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
+    
 }
 .aside-btn:hover{
     background-color: rgb(0 0 0 / 20%);
 }
 
+.search-filter-notes{
+    width: 400px;
+    text-align: center;
+    background-color: rgb(241 243 244);
+}
+
+.search-filter-notes button, input{
+    background-color: rgb(241 243 244);
+    border: none;
+}
+
+input:focus{
+    width: 70%;
+    /* background-color: white; */
+}

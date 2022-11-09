@@ -8,14 +8,19 @@ export default {
                 <div v-if="pin">pin note</div>
               </div>    
               <textarea name="" id="" cols="24" rows="10">{{info.txt}}</textarea>
-              <note-buttens v-if="isOver" ></note-buttens>
+              <note-buttens v-if="isOver" @deleteNote="deleteNote" :id="id"></note-buttens>
           </section>
           `,
-    props: ['info'],
+    props: ['info','id'],
     data() {
       return {
         isOver: false,
         pin:false
+      }
+    },
+    methods: {
+      deleteNote(id){
+        this.$emit('deleteNote', id)
       }
     },
     components: {
