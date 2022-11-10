@@ -19,6 +19,15 @@
     grid-gap: 19px; */
 }
 
+button{
+    font-family: Roboto, sans-serif;
+}
+
+.note-btns-2{
+    position: relative;
+    width: 200px;
+} 
+
 .note{
     font-family: Roboto, sans-serif;
     width: 300px;
@@ -57,7 +66,8 @@
 
 .note h1{
     font-family: Roboto, sans-serif;
-    font-size: 17px;
+    font-size: 21px;
+    margin-left: 0;
 }
 
 .note-btn-txt{
@@ -67,12 +77,16 @@
 
 .note textarea{
     font-family: Roboto, sans-serif;
-    font-size: 15px;
+    font-size: 19px;
     width: 90%;
     height: 90%;
     resize: none;
     background-color: rgba(240, 248, 255, 0);
     border: none;
+}
+
+.note ul{
+    padding-left: 10px;
 }
 
 .note:hover{
@@ -107,10 +121,10 @@
 }
 
 .add-note-section form input{
-    background-color: #ffffff;
+    background-color: #ffffff29;
 }
 
-.add-note-section div {
+.add-note-section .note-btns-2 {
     width: 200px;
 
 }
@@ -159,7 +173,7 @@ aside{
     position:absolute;
     bottom: 40px;
     padding: 10px;
-    background-color: #ffffff;
+    background-color: #ada6a6;
     border: solid 1px #e0e0e0;
     z-index: 1;
     display: flex;
@@ -168,11 +182,12 @@ aside{
 
 .google-color{
     width: 30px;
+    margin-right: 4px;
     height: 30px;
     border-radius: 50%;
     cursor: pointer;
 }
-
+.add-note-section
 .google-color:hover{
     border: black solid 1px;
 

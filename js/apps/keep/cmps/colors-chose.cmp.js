@@ -24,7 +24,12 @@ export default {
             return {backgroundColor: color}
         },
         choseColor(color){
-            eventBus.emit('change-note-color', {color: color, id: this.id})
+            if (this.id === null){
+                console.log('yes it is null');
+                eventBus.emit('change-add-note-color', color)
+            }else{
+                eventBus.emit('change-note-color', {color: color, id: this.id})
+            }
         }
     },
     computed:{

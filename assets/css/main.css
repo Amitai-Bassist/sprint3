@@ -21,3 +21,8 @@ img{
 h1{
     margin: 10px;
 }
+
+body{
+    font-family: Roboto, sans-serif;
+    margin: 0;
+}
