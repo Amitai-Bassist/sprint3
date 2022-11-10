@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@font-face {
+    font-family: Roboto, sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+}
+
 .note-container {
     margin-top: 20px;
     column-count: 4;
     column-gap: 10px;
     row-gap: 10px;
+    margin-bottom: 15px;
+    width: 1230px;
     
     /* grid-auto-flow: column; */
     /* grid-template-columns: repeat(auto-fit, 300px);
@@ -11,11 +20,12 @@
 }
 
 .note{
+    font-family: Roboto, sans-serif;
     width: 300px;
     break-inside: avoid;
     flex-wrap: wrap;
     border-radius: 10px;
-    padding: 40px;
+    padding: 45px;
     height: max-content;
     border: solid 1px #e0e0e0;
     display: grid;
@@ -42,8 +52,13 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     position: absolute;
     bottom: 0;
+    left: 10px;
 }
 
+.note h1{
+    font-family: Roboto, sans-serif;
+    font-size: 17px;
+}
 
 .note-btn-txt{
     position: absolute;
@@ -51,6 +66,8 @@
 }
 
 .note textarea{
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
     width: 90%;
     height: 90%;
     resize: none;
@@ -67,17 +84,20 @@
 .note-btn {
     background-color: rgba(32, 125, 102, 0);
     border: none;
+    margin-left: 5px;
 }
 
 
 
 .add-note-section{
-    margin-top: 5px;
+    margin-top: 25px;
     margin-bottom: 5px;
+    padding: 5px;
     display: grid;
+    border-radius: 10px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    width: 400px;
+    width: 440px;
     text-align: center;
     border: solid 1px rgb(181, 176, 176);
 }
@@ -98,6 +118,7 @@
 .add-note-btn{
     background-color: #ffffff00;
     border: none;
+    margin-left: 1px;
 }
 .add-note-btn:hover{
     background-color: rgba(169, 111, 111, 0.14);
@@ -130,7 +151,7 @@
 }
 
 aside{
-    padding-top: 10%;
+    padding-top: 25px;
     grid-template-rows: 90px 90px 90px 90px;
 }
 

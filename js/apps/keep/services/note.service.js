@@ -38,7 +38,8 @@ function getFirstNotes(){
             type: "note-txt", 
             isPinned: true, 
             info: { 
-                txt: "Fullstack Me Baby!" 
+                txt: "Fullstack Me Baby!" ,
+                title: 'just do it!' 
             },
             style: { 
                 backgroundColor: "rgb(167 255 235)" 
@@ -88,12 +89,26 @@ function getFirstNotes(){
             type: "note-txt", 
             isPinned: false, 
             info: { 
-                txt: "i wish i was a full stack" 
+                txt: "i wish i was a full stack",
+                title: 'my wish' 
+
             },
             style: { 
                 backgroundColor: "rgb(230 201 168)" 
             }
         }, 
+        { 
+            id: "n109", 
+            type: "note-txt", 
+            isPinned: true, 
+            info: { 
+                txt: "don't forget to call tomi" ,
+                title: '😲' 
+            },
+            style: { 
+                backgroundColor: "rgb(167 255 235)" 
+            }
+        }
     ]
     return notes
 }

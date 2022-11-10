@@ -9,7 +9,7 @@ export default {
     props: ['notesPinned','notesOther'],
     template: `
         
-        <h1>PINNED</h1>
+        <h1 v-if="notesPinned.length !== 0">PINNED</h1>
         <section class="note-container ">
                 <div class="note-div"  v-for="(note, idx) in notesPinned">
                     <component :is="note.type"  

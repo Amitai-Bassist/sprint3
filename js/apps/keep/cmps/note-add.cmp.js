@@ -21,6 +21,7 @@ export default {
                 <button class="note-btn" @click=""><i class="fa fa-archive fa-2x" aria-hidden="true"></i></button>
                 <button class="note-btn" @click=""><i class="fa fa-picture-o fa-2x" aria-hidden="true"></i></button>
                 <button class="note-btn" @click="showColors = true"><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i></button>
+                <colors-chose v-if="showColors" class="colors-for-notes" :id="id" ></colors-chose>
             </div>
         <div v-if="isOver">
             <button @click="save" class="note-btn">save</button>
@@ -31,7 +32,8 @@ export default {
         return {
             isOver:false,
             noteToEdit: notesService.getEmptyNote() ,
-            isActive: 'txt'
+            isActive: 'txt',
+            showColors:false
 
         }
     },
