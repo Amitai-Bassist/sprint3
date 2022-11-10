@@ -21,6 +21,7 @@ function getFirstNotes(){
         { 
             id: "n103", 
             type: "note-todos", 
+            isPinned: false,
             info: { 
                 label: "Get my stuff together", 
                 todos: [ 
@@ -46,6 +47,7 @@ function getFirstNotes(){
         { 
             id: "n102", 
             type: "note-img", 
+            isPinned: false,
             info: { 
                 url: "http://coding-academy.org/books-photos/14.jpg", 
                 title: "muki and Me" 
@@ -55,8 +57,9 @@ function getFirstNotes(){
             } 
         }, 
         { 
-            id: "n103", 
+            id: "n104", 
             type: "note-todos", 
+            isPinned: false,
             info: { 
                 label: "places to go", 
                 todos: [ 
@@ -69,8 +72,9 @@ function getFirstNotes(){
             }
         },
         { 
-            id: "n102", 
+            id: "n105", 
             type: "note-img", 
+            isPinned: false,
             info: { 
                 url: "http://coding-academy.org/books-photos/20.jpg", 
                 title: "Bobi and Me" 
@@ -80,7 +84,7 @@ function getFirstNotes(){
             } 
         },
         { 
-            id: "n101", 
+            id: "n106", 
             type: "note-txt", 
             isPinned: false, 
             info: { 

@@ -1,10 +1,11 @@
 import noteButtens from '../cmps/note-buttens.cmp.js'
+import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export default {
     template: `
           <section @mouseover="isOver = true" @mouseleave="isOver = false" class="note note-txt">
               <div v-if="isOver" class="flex">
-                <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click=""><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
+                <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click="pinNote"><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
                 <div v-if="pin">pin note</div>
               </div>    
               <textarea name="" id="" cols="24" rows="10">{{info.txt}}</textarea>
@@ -19,8 +20,8 @@ export default {
       }
     },
     methods: {
-      deleteNote(id){
-        this.$emit('deleteNote', id)
+      pinNote(){
+        eventBus.emit('pin-note', this.id)
       }
     },
     components: {

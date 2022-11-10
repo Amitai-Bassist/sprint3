@@ -1,10 +1,11 @@
 import noteButtens from '../cmps/note-buttens.cmp.js'
+import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export default {
     template: `
     <section @mouseover="isOver = true" @mouseleave="isOver = false" class="note note-img">
         <div v-if="isOver" class="pin flex">
-            <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click=""><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
+            <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click="pinNote"><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
             <div v-if="pin">pin note</div>
         </div>
         <div class="content">
@@ -25,6 +26,11 @@ export default {
     computed: {
         imgUrl(){
             return this.info.url
+        }
+    },
+    methods: {
+        pinNote(){
+          eventBus.emit('pin-note', this.id)
         }
     },
     components: {

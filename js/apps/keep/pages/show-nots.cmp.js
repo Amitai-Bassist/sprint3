@@ -10,34 +10,50 @@ export default {
     <section class="note-app">
             <note-filter></note-filter>
             <note-add @saved="addNote"></note-add>
-            <note-list :notes="notes"></note-list>
+            <note-list :notesPinned="notesPinned" :notesOther="notesOther"></note-list>
     
         </section>
     `,
     data() {
         return {
-            notes: []
+            allNotes: [],
+            notesPinned: [],
+            notesOther: [],
+            filterBy: ''
         }
     },
     created(){
+        
         notesService.query()
             .then(notes => {
-                this.notes = notes
+                // const regex = new RegExp(this.filterBy.txt,'i')
+                // this.books.filter(book => regex.test(book.title) && book.listPrice.amount >= this.filterBy.fromPrice && book.listPrice.amount <= this.filterBy.toPrice )
+        
+                this.allNotes = notes
+                this.notesPinned = notes.filter(note => note.isPinned)
+                this.notesOther = notes.filter(note => !note.isPinned)
             })
+        
         eventBus.on('deleteNote', this.deleteNote)
+        eventBus.on('pin-note', this.pinNote)
+        eventBus.on('filter-notes', this.filterNotes)
     },
     methods: {
         addNote(){
             notesService.query()
             .then(notes => {
-                this.notes = notes
+                this.allNotes = notes
+                this.notesPinned = notes.filter(note => note.isPinned)
+                this.notesOther = notes.filter(note => !note.isPinned)
             })
         },
         deleteNote(noteId){
             notesService.remove(noteId)
                 .then(() => {
-                    const idx = this.notes.findIndex(note => note.id === noteId)
-                    this.notes.splice(idx, 1)
+                    const idx1 = this.notesPinned.findIndex(note => note.id === noteId)
+                    this.notesPinned.splice(idx1, 1)
+                    const idx2 = this.notesOther.findIndex(note => note.id === noteId)
+                    this.notesOther.splice(idx2, 1)
                     
                     const msg = {
                         txt: `Note ${noteId} deleted...`,
@@ -45,6 +61,33 @@ export default {
                     }
                     eventBus.emit('show-msg', msg)
                 })
+            notesService.query()
+                .then(notes => {this.allNotes = notes})
+        },
+        pinNote(noteId){
+            let noteToPin 
+            notesService.get(noteId)
+            .then(note => {
+                noteToPin = note
+                console.log(noteToPin);
+                noteToPin.isPinned = !noteToPin.isPinned
+                if (noteToPin.isPinned){
+                    this.notesPinned.unshift(noteToPin)
+                    const idx2 = this.notesOther.findIndex(note => note.id === noteId)
+                    this.notesOther.splice(idx2, 1)
+                }else{
+                    this.notesOther.unshift(noteToPin)
+                    const idx1 = this.notesPinned.findIndex(note => note.id === noteId)
+                    this.notesPinned.splice(idx1, 1)
+                }
+                notesService.save(noteToPin)
+                notesService.query()
+                    .then(notes => {this.allNotes = notes})
+            })
+        },
+        filterNotes(filter){
+            console.log(filter);
+            this.filterBy = filter
         }
     },
     components:{
