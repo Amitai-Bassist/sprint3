@@ -12,6 +12,7 @@
 @import './apps/mail/email.compose.css';
 @import './apps/mail/preview-email.css';
 @import './apps/mail/email.details.css';
+@import './apps/mail/email-filter.css';
 
 img{
     background-color: black;

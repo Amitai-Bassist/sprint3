@@ -1,0 +1,21 @@
+
+.filter-btn-search {
+    background-color: inherit;
+    border: none;
+    font-size: 20px;
+}
+.search-container {
+    display: grid;
+    grid-template-columns: 7% 93%;
+    width: 500px;
+    margin-left: 20px;
+    /* padding-left: 20px; */
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}
+
+#search {
+    background-color: inherit;
+    border: none;
+    outline: none;
+}

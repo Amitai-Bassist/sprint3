@@ -21,7 +21,7 @@ function query() {
 function addEmail(email) {
     email.isRead = false;
     email.isStarred = false;
-    email.sentAt = new Date().getDay() + '/' + new Date().getMonth()
+    email.sentAt = new Date()
     return storageService.post(EMAIL_KEY, email)
 }
 
@@ -38,7 +38,7 @@ function createEmail(subject, body, isRead = false, isStarred = false, from, to)
         body,
         isRead,
         isStarred,
-        sentAt: new Date().getDay() + '/' + new Date().getMonth(),
+        sentAt: new Date(),
         from,
         to,
     }

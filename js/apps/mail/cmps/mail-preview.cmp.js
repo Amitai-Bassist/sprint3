@@ -8,7 +8,7 @@ export default {
                 <div class="preview-email-from">{{ email.from }} </div>
                 <div class="preview-email-subject">{{ email.subject }} </div>
                 <div class="preview-email-body"></div>
-                <div class="preview-email-sentAt">{{ email.sentAt }} </div> 
+                <div class="preview-email-sentAt">{{ showFormatTime }} </div> 
             </article>
             <!-- <div @click="email.isRead = !email.isRead" v-if="email.isRead" @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email-trash"><i v-if="isMouseOver" class="fa fa-envelope-o" aria-hidden="true"></i></div>
             <div @click="email.isRead = !email.isRead" v-else @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email-trash"><i v-if="isMouseOver" class="fa fa-envelope-open-o" aria-hidden="true"></i></div> -->
@@ -29,10 +29,16 @@ export default {
         toggeleRead() {
             console.log('hi');
             this.$emit('toggeleRead', this.email)
+        },
+        
+    },
+    computed: {
+        showFormatTime() {
+            var month = this.email.sentAt.substring(5,7)
+            var day = this.email.sentAt.substring(8,10)
+            return day + '/' + month
         }
-
     },
     components: {
-
     }
 }

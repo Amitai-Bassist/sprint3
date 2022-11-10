@@ -11,6 +11,7 @@
 }
 
 .details-email-subject {
+    padding-top: 10px;
     padding-left: 10px;
     font-size: 1.5rem;
     font-weight: bold;
@@ -32,10 +33,18 @@
 .details-email-header {
     /* padding-left: 10px; */
     /* margin-bottom: 150px; */
+    border-bottom: 1px solid #29292925;
+    display: flex;
 }
 .details-email-btn-back {
     background-color: inherit;
     border: none;
     color: rgba(70, 70, 70, 0.812);
     font-size: 1.2rem;
+}
+.details-email-sentAt {
+    /* justify-self: center; */
+    /* padding-right: 50px; */
+    margin-inline-start: 50x;
+    margin-top: 13px;
 }

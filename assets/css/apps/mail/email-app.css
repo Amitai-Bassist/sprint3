@@ -33,3 +33,8 @@
     border-radius: 50px;
     /* border-radius: 50px; */
 }
+.email-app-filter-container {
+    background-color: rgba(149, 149, 149, 0.153);
+    padding: 15px;
+    margin: 10px;
+}

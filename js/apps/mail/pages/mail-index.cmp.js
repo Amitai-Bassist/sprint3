@@ -7,7 +7,9 @@ import mailCompose from './mail-compose.cmp.js'
 export default {
     template: `
     <section class="email-app">
-        <!-- <mail-filter @filter="setFilter" :emails="emails"/> -->
+        <div class="email-app-filter-container">
+            <mail-filter @upDateSearchTxt="upDateSearchTxt" @filter="setFilter" :emails="emails"/>
+        </div>
         <section class="email-container">
             <nav class="email-nav flex flex-column">
                 <button class="email-nav-btn-compose" @click="showComsose=!showComsose">Compose</button>
@@ -61,20 +63,41 @@ export default {
         clickStarred() {
             this.filterBy.starred = true
             this.filterBy.sent = false
+        }, 
+        upDateSearchTxt(txt) {
+            this.filterBy.txt = txt
+            console.log('txt', txt);
+            console.log(this.filterBy);
         }
     },
     computed: {
         emailsToShow() {
+            const regex = new RegExp(this.filterBy.txt, 'i')
+            var emails = this.emails.filter(email => regex.test(email.from))
+            // if (this.filterBy.txt) {
+            //     return this.emails.filter(email => regex.test(email.from))
+            // }
             if (!this.filterBy.starred && this.filterBy.read === 'All' && this.filterBy.sent === false) {
-                return this.emails.filter(email => {
+                return emails.filter(email => {
                     return email.from !== 'Me' || email.from === 'Me' && email.to === 'Me'
                 })
             }
             
-            if (this.filterBy.sent === true) return this.emails.filter(email => email.from === 'Me')
-            if (this.filterBy.starred === true) return this.emails.filter(email => {
+            if (this.filterBy.sent === true) return emails.filter(email => email.from === 'Me')
+            if (this.filterBy.starred === true) return emails.filter(email => {
                 return (email.from === 'Me' && email.to === 'Me' && email.isStarred === true) || (email.isStarred === true && email.from !== 'Me')
             })
+
+            // if (!this.filterBy.starred && this.filterBy.read === 'All' && this.filterBy.sent === false) {
+            //     return this.emails.filter(email => {
+            //         return email.from !== 'Me' || email.from === 'Me' && email.to === 'Me'
+            //     })
+            // }
+            
+            // if (this.filterBy.sent === true) return this.emails.filter(email => email.from === 'Me')
+            // if (this.filterBy.starred === true) return this.emails.filter(email => {
+            //     return (email.from === 'Me' && email.to === 'Me' && email.isStarred === true) || (email.isStarred === true && email.from !== 'Me')
+            // })
         },
     },
     components: {
