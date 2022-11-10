@@ -12,6 +12,8 @@ export const emailService = {
     getEmailById,
     createEmail,
     addEmail,
+    remove,
+    getIndexById,
 }
 
 function query() {
@@ -25,7 +27,17 @@ function addEmail(email) {
     return storageService.post(EMAIL_KEY, email)
 }
 
+function getIndexById(emailId) {
+    return storageService.query(EMAIL_KEY)
+        .then(emails => {
+            var idx = emails.findIndex(email => email.id === emailId)
+            return idx
+        })
+}
 
+function remove(emailId) {
+    return storageService.remove(EMAIL_KEY, emailId)
+}
 
 function getEmailById(emailId) {
     return storageService.get(EMAIL_KEY, emailId)

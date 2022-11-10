@@ -10,7 +10,7 @@ export default {
         <!-- <div class="search-container"> -->
             <form class="search-container" @submit.prevent="upDateSearch">
                 <button  class="filter-btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
-                <input v-model="filterBy.txt" id="search" type="search" placeholder="type here to search">
+                <input v-model="filterBy.txt" id="search" type="search" placeholder="Type here to search">
             </form>
         <!-- </div> -->
         <!-- <h1>{{filterBy}}</h1> -->

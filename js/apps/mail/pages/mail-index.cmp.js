@@ -1,4 +1,5 @@
 import { emailService } from '../services/email.service.js'
+import { eventBus } from '../../../services/event-bus.service.js'
 
 import mailList from '../cmps/mail-list.cmp.js'
 import mailFilter from '../cmps/mail-filter.cmp.js'
@@ -18,7 +19,7 @@ export default {
                 <button class="email-nav-btn-starred btn-nav" @click="clickStarred">Starred</button>
                 <button class="email-nav-btn-sent btn-nav" @click="clickSent">Sent</button>
             </nav>
-            <mail-list class="email-list-container" :emails="emailsToShow"/>
+            <mail-list @deleate="deleate" class="email-list-container" :emails="emailsToShow"/>
         </section>
     </section>
     `,
@@ -46,7 +47,20 @@ export default {
         saveEmail(email) {
             this.showComsose = false
             this.emails.unshift(email)
+            const msg = {
+                txt: `Email send successly`,
+                type: 'success',
+            }
+            eventBus.emit('show-msg', msg)
         },
+
+        deleate(email){
+            console.log(email);
+            var idx = this.emails.findIndex(emaill => emaill.id === email.id)
+            this.emails.splice(idx, 1)
+            // console.log(emailService.getEmailById(email.id));
+        },
+
         closeCompose() {
             this.showComsose = false
         },
@@ -73,31 +87,20 @@ export default {
     computed: {
         emailsToShow() {
             const regex = new RegExp(this.filterBy.txt, 'i')
-            var emails = this.emails.filter(email => regex.test(email.from))
-            // if (this.filterBy.txt) {
-            //     return this.emails.filter(email => regex.test(email.from))
-            // }
+            // var emails = this.emails.filter(email => regex.test(email.from))
+            if (this.filterBy.txt) {
+                return this.emails.filter(email => regex.test(email.from))
+            }
             if (!this.filterBy.starred && this.filterBy.read === 'All' && this.filterBy.sent === false) {
-                return emails.filter(email => {
+                return this.emails.filter(email => {
                     return email.from !== 'Me' || email.from === 'Me' && email.to === 'Me'
                 })
             }
             
-            if (this.filterBy.sent === true) return emails.filter(email => email.from === 'Me')
-            if (this.filterBy.starred === true) return emails.filter(email => {
+            if (this.filterBy.sent === true) return this.emails.filter(email => email.from === 'Me')
+            if (this.filterBy.starred === true) return this.emails.filter(email => {
                 return (email.from === 'Me' && email.to === 'Me' && email.isStarred === true) || (email.isStarred === true && email.from !== 'Me')
             })
-
-            // if (!this.filterBy.starred && this.filterBy.read === 'All' && this.filterBy.sent === false) {
-            //     return this.emails.filter(email => {
-            //         return email.from !== 'Me' || email.from === 'Me' && email.to === 'Me'
-            //     })
-            // }
-            
-            // if (this.filterBy.sent === true) return this.emails.filter(email => email.from === 'Me')
-            // if (this.filterBy.starred === true) return this.emails.filter(email => {
-            //     return (email.from === 'Me' && email.to === 'Me' && email.isStarred === true) || (email.isStarred === true && email.from !== 'Me')
-            // })
         },
     },
     components: {

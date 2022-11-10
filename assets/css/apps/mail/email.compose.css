@@ -5,6 +5,7 @@
     width: 75vw;
     box-shadow: 1px 1px 4px 1px rgba(117, 117, 117, 0.7);
     left: 20px;
+    bottom: 30px;
 }
 
 .email-compose .email-header {
