@@ -3,10 +3,10 @@ import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-
 export default {
     template: `
     <section class="search-filter-notes">
-        <form @submit.prevent="filterNotes">
+        
             <button><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
-            <input type="Search" placeholder="search" v-model="inputVal"/>
-        </form>
+            <input @input="filterNotes" type="Search" placeholder="search" v-model="inputVal"/>
+        
         
     </section>
     `,
@@ -17,6 +17,7 @@ export default {
     },
     methods:{
         filterNotes(){
+            console.log(this.inputVal);
             eventBus.emit('filter-notes', this.inputVal)
         }
     },

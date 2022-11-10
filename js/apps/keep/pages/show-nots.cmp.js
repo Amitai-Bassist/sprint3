@@ -43,7 +43,7 @@ export default {
                 const regex = new RegExp(this.filterBy,'i')
                 let fNotes = notes.filter(note => regex.test(note.info.title))
        
-                this.allNotes = fNotes
+                this.allNotes = notes
                 this.notesPinned = fNotes.filter(note => note.isPinned)
                 this.notesOther = fNotes.filter(note => !note.isPinned)
 
@@ -93,12 +93,13 @@ export default {
             console.log(filter);
             this.filterBy = filter
             const regex = new RegExp(this.filterBy,'i')
-            this.notesPinned = this.notesPinned.filter(note => regex.test(note.info.title ||
+            this.notesPinned = this.allNotes.filter(note =>note.isPinned && regex.test( note.info.title ||
                                                                           note.info.label ||
-                                                                          note.info.txt))
-            this.notesOther = this.notesOther.filter(note => regex.test(note.info.title ||
-                                                                        note.info.label ||
-                                                                        note.info.txt))
+                                                                          note.info.txt || note.info.todos[0].txt||
+                                                                          note.type))
+            this.notesOther = this.allNotes.filter(note =>!note.isPinned && regex.test( note.info.title || note.info.label ||
+                                                                                     note.info.txt || note.info.todos[0].txt ||
+                                                                                     note.type))
         },
         changeNoteColor(inf){
             console.log(inf);

@@ -5,16 +5,16 @@ import noteButtens from '../cmps/note-buttens.cmp.js'
 
 export default {
     template: `
-    <section class="add-note-section">
+    <section  class="add-note-section">
         <form @submit.prevent="save">
             <input v-if="isOver" type="text" v-model="noteToEdit.title" placeholder="Title"/>
             <input @focus="isOver=true" v-model="noteToEdit.info.txt" type="text" placeholder="Take a note..."/>
         </form>
         <div>
-            <button class="add-note-btn"><i class="fa fa-comment-o fa-2x" aria-hidden="true"></i></button>
-            <button class="add-note-btn"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i></button>
-            <button class="add-note-btn"><i class="fa fa-picture-o fa-2x" aria-hidden="true"></i></button>
-            <button class="add-note-btn"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></button>
+            <button @click="isActive= 'txt'" class="add-note-btn" :class="active('txt')"><i class="fa fa-comment-o fa-2x" aria-hidden="true"></i></button>
+            <button @click="isActive= 'todo'" class="add-note-btn" :class="active('todo')"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i></button>
+            <button @click="isActive= 'img'" class="add-note-btn" :class="active('img')"><i class="fa fa-picture-o fa-2x" aria-hidden="true"></i></button>
+            <button @click="isActive= 'video'" class="add-note-btn" :class="active('video')"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></button>
         </div>
         <div v-if="isOver" class="flex">
                 <button class="note-btn" @click=""><i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i></button>
@@ -23,14 +23,16 @@ export default {
                 <button class="note-btn" @click="showColors = true"><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i></button>
             </div>
         <div v-if="isOver">
-            <button class="note-btn">save</button>
+            <button @click="save" class="note-btn">save</button>
         </div>
     </section>
     `,
     data() {
         return {
             isOver:false,
-            noteToEdit: notesService.getEmptyNote()      
+            noteToEdit: notesService.getEmptyNote() ,
+            isActive: 'txt'
+
         }
     },
     created(){
@@ -52,6 +54,9 @@ export default {
                     console.log('OOps:', err)
                     showErrorMsg(`Cannot save note`)
                 })
+        },
+        active(type){
+            return {'add-note-active': type === this.isActive}
         }
     },
     name: 'note-add',
