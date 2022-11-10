@@ -12,7 +12,7 @@ export default {
             </article>
             <!-- <div @click="email.isRead = !email.isRead" v-if="email.isRead" @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email-trash"><i v-if="isMouseOver" class="fa fa-envelope-o" aria-hidden="true"></i></div>
             <div @click="email.isRead = !email.isRead" v-else @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email-trash"><i v-if="isMouseOver" class="fa fa-envelope-open-o" aria-hidden="true"></i></div> -->
-            <div @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email-trash"><i v-if="isMouseOver" class="fa fa-trash-o" aria-hidden="true"></i></div>
+            <div @click="deleate" @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email-trash"><i v-if="isMouseOver" class="fa fa-trash-o" aria-hidden="true"></i></div>
             <!-- <div @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email-trash"><i v-if="isMouseOver" class="fa fa-trash-o" aria-hidden="true"></i></div> -->
         </div>
     `,
@@ -30,13 +30,18 @@ export default {
             console.log('hi');
             this.$emit('toggeleRead', this.email)
         },
-        
+        deleate() {
+            console.log('hi');
+            this.$emit('deleate', this.email)
+        }
     },
     computed: {
         showFormatTime() {
-            var month = this.email.sentAt.substring(5,7)
-            var day = this.email.sentAt.substring(8,10)
-            return day + '/' + month
+            if (this.email.sentAt) {
+                var month = this.email.sentAt.substring(5,7)
+                var day = this.email.sentAt.substring(8,10)
+                return day + '/' + month
+            }
         }
     },
     components: {

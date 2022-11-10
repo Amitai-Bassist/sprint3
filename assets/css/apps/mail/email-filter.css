@@ -3,6 +3,7 @@
     background-color: inherit;
     border: none;
     font-size: 20px;
+    border-radius: 50px;
 }
 .search-container {
     display: grid;
@@ -18,4 +19,5 @@
     background-color: inherit;
     border: none;
     outline: none;
+    border-radius: 50px;
 }

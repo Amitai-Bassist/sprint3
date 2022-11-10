@@ -6,7 +6,7 @@ export default {
     template: `
         <ul class="clean-list" v-if="!showDetailsEmail">
             <li v-for="email in emails" :key="email.id">
-                <mail-preview :class="{isRead: email.isRead}" @showDetails="showDetails" :email="email"/>
+                <mail-preview :class="{isRead: email.isRead}" @deleate="deleate" @showDetails="showDetails" :email="email"/>
             </li>
         </ul>
         <mail-details v-else @close="close" :email="showDetailsEmail" />
@@ -23,6 +23,10 @@ export default {
         close() {
             this.showDetailsEmail = null
         },
+        deleate(email) {
+            console.log('hi from list');
+            this.$emit('deleate',email)
+        }
         // toggeleRead(email) {
         //     console.log('before',email.isRead);
         //     email.isRead = !email.isRead
