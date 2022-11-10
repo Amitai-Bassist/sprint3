@@ -10,11 +10,11 @@ export default {
         <!-- <mail-filter @filter="setFilter" :emails="emails"/> -->
         <section class="email-container">
             <nav class="email-nav flex flex-column">
-                <button @click="showComsose=!showComsose">Compose</button>
+                <button class="email-nav-btn-compose" @click="showComsose=!showComsose">Compose</button>
                 <mail-compose v-if="showComsose" @close="closeCompose" @sended="saveEmail" />
-                <button @click="clickInbox">Inbox</button>
-                <button @click="clickStarred">Starred</button>
-                <button @click="clickSent">Sent</button>
+                <button class="email-nav-btn-inbox btn-nav" @click="clickInbox">Inbox</button>
+                <button class="email-nav-btn-starred btn-nav" @click="clickStarred">Starred</button>
+                <button class="email-nav-btn-sent btn-nav" @click="clickSent">Sent</button>
             </nav>
             <mail-list class="email-list-container" :emails="emailsToShow"/>
         </section>

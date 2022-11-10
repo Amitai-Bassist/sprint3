@@ -21,3 +21,18 @@
     font-weight: bolder;
     background-color: rgb(214, 215, 215);
 }
+.fa-trash-o {
+    padding: 10px;
+
+}
+.fa-trash-o:hover {
+    background-color: rgb(225, 225, 225);
+    border-radius: 50%;
+}
+.fa-star-o {
+    padding: 10px;
+}
+.fa-star-o:hover {
+    background-color: rgb(225, 225, 225);
+    border-radius: 50%;
+}

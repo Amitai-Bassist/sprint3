@@ -3,6 +3,28 @@
     /* background-color: aquamarine; */
     padding: 10px;
     display: grid;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 12.5% 87.5%;
     gap: 20px;
+}
+.email-nav {
+    margin-left: 5px;
+}
+.email-nav-btn-compose {
+    /* background-color: aqua; */
+    width: 100%;
+    /* height: 500px; */
+    margin-bottom: 20px;
+    margin-top: 25%;
+    padding: 0;
+    border-radius: 50px;
+    font-size: 1.2em;
+}
+.btn-nav {
+    background-color: inherit;
+    border: none;
+    font-size: 1em;
+}
+.btn-nav:hover {
+    background-color: rgba(223, 223, 223, 0.402);
+    border-radius: 50px;
 }
