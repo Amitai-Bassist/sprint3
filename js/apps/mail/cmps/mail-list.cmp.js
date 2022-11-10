@@ -6,7 +6,7 @@ export default {
     template: `
         <ul class="clean-list" v-if="!showDetailsEmail">
             <li v-for="email in emails" :key="email.id">
-                <mail-preview :class="{isNotRead: !email.isRead}" @showDetails="showDetails" :email="email"/>
+                <mail-preview :class="{isRead: email.isRead}" @showDetails="showDetails" :email="email"/>
             </li>
         </ul>
         <mail-details v-else @close="close" :email="showDetailsEmail" />
