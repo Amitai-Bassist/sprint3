@@ -8,14 +8,23 @@ export default {
     <section class="add-note-section">
         <form @submit.prevent="save">
             <input v-if="isOver" type="text" v-model="noteToEdit.title" placeholder="Title"/>
-            <input @focus="isOver=true" v-model="noteToEdit.info.txt" type="text" placeholder="add"/>
-            <button>save</button>
+            <input @focus="isOver=true" v-model="noteToEdit.info.txt" type="text" placeholder="Take a note..."/>
         </form>
-        <button><i class="fa fa-comment-o fa-2x" aria-hidden="true"></i></button>
-        <button><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i></button>
-        <button><i class="fa fa-picture-o fa-2x" aria-hidden="true"></i></button>
-        <button><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></button>
-        <note-buttens v-if="isOver" ></note-buttens>
+        <div>
+            <button class="add-note-btn"><i class="fa fa-comment-o fa-2x" aria-hidden="true"></i></button>
+            <button class="add-note-btn"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i></button>
+            <button class="add-note-btn"><i class="fa fa-picture-o fa-2x" aria-hidden="true"></i></button>
+            <button class="add-note-btn"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></button>
+        </div>
+        <div v-if="isOver" class="flex">
+                <button class="note-btn" @click=""><i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i></button>
+                <button class="note-btn" @click=""><i class="fa fa-archive fa-2x" aria-hidden="true"></i></button>
+                <button class="note-btn" @click=""><i class="fa fa-picture-o fa-2x" aria-hidden="true"></i></button>
+                <button class="note-btn" @click="showColors = true"><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i></button>
+            </div>
+        <div v-if="isOver">
+            <button class="note-btn">save</button>
+        </div>
     </section>
     `,
     data() {

@@ -72,12 +72,40 @@
 
 
 .add-note-section{
-    width: 890px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 400px;
     text-align: center;
+    border: solid 1px rgb(181, 176, 176);
+}
+
+.add-note-section form{
+    width: 200px;
+}
+
+.add-note-section form input{
+    background-color: #ffffff;
+}
+
+.add-note-section div {
+    width: 200px;
+
+}
+
+.add-note-btn{
+    background-color: #ffffff00;
+    border: none;
+}
+.add-note-btn:hover{
+    background-color: rgb(0 0 0 / 54%);
+    border-radius: 50%;
 }
 
 .note-btn:hover{
-    background-color: rgb(0 0 0 / 54%);
+    background-color: rgba(169, 111, 111, 0.14);
     border-radius: 50%;
 }
 
@@ -159,6 +187,5 @@ aside{
 }
 
 input:focus{
-    /* width: 70%; */
-    /* background-color: white; */
+    
 }
