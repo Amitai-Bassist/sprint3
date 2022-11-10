@@ -22,9 +22,9 @@
 .btn-nav {
     background-color: rgba(214, 214, 214, 0);
     border: none;
-    /* font-size: 1em; */
+    font-size: 1em;
     width: 100%;
-    padding-left: 30px ;
+    padding-left: 10px ;
     text-align: start;
 }
 

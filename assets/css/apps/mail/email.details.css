@@ -2,10 +2,40 @@
 .details-email {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 5% 5% 5% 70% 5%;
-    background-color: aqua;
+    grid-template-rows: 10% 10% 7% 5% 68%  ;
+    background-color: rgba(211, 211, 211, 0.219);
     padding: 15px;
     height: 80vh;
-    gap: 5px;
+    /* gap: 5px; */
     margin-right: 20px;
+}
+
+.details-email-subject {
+    padding-left: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.details-email-from {
+    padding-left: 10px;
+    font-weight: bold;
+}
+.details-email-to {
+    padding-left: 10px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid #29292925;
+}
+.details-email-body {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.details-email-header {
+    /* padding-left: 10px; */
+    /* margin-bottom: 150px; */
+}
+.details-email-btn-back {
+    background-color: inherit;
+    border: none;
+    color: rgba(70, 70, 70, 0.812);
+    font-size: 1.2rem;
 }

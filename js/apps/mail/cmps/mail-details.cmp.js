@@ -3,18 +3,20 @@ export default {
     template: `
     <section>
         <div class="details-email">
-            <div class="details-email-subject">Subject: {{ email.subject }}</div>
-            <div class="details-email-from">from: {{ email.from }}</div>
-            <div class="details-email-to">to: {{ email.to }}</div>
-            <div class="details-email-sentAt">sentAt: {{ email.sentAt }}</div>
-            <div><p>Body: {{ email.body }}</p></div>
-            <div><button @click="close">Back</button></div>
+            <div class="details-email-header">
+                <button class="details-email-btn-back" @click="close"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></button>
+            </div>
+            <div class="details-email-subject">{{ email.subject }}</div>
+            <div class="details-email-from">{{ email.from }}</div>
+            <div class="details-email-to">{{ email.to }}</div>
+            <!-- <div class="details-email-sentAt">sentAt: {{ email.sentAt }}</div> -->
+            <p class="details-email-body">{{ email.body }}</p>
         </div>
     </section>
     `,
-    methods:{
-        close(){
-            this.$emit('close' ,this.email)
+    methods: {
+        close() {
+            this.$emit('close', this.email)
         }
     }
 }
