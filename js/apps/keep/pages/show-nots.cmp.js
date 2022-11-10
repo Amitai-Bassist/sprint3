@@ -25,10 +25,7 @@ export default {
     created(){
         
         notesService.query()
-            .then(notes => {
-                // const regex = new RegExp(this.filterBy.txt,'i')
-                // this.books.filter(book => regex.test(book.title) && book.listPrice.amount >= this.filterBy.fromPrice && book.listPrice.amount <= this.filterBy.toPrice )
-        
+            .then(notes => { 
                 this.allNotes = notes
                 this.notesPinned = notes.filter(note => note.isPinned)
                 this.notesOther = notes.filter(note => !note.isPinned)
@@ -37,32 +34,39 @@ export default {
         eventBus.on('deleteNote', this.deleteNote)
         eventBus.on('pin-note', this.pinNote)
         eventBus.on('filter-notes', this.filterNotes)
+        eventBus.on('change-note-color', this.changeNoteColor)
     },
     methods: {
         addNote(){
             notesService.query()
             .then(notes => {
-                this.allNotes = notes
-                this.notesPinned = notes.filter(note => note.isPinned)
-                this.notesOther = notes.filter(note => !note.isPinned)
+                const regex = new RegExp(this.filterBy,'i')
+                let fNotes = notes.filter(note => regex.test(note.info.title))
+       
+                this.allNotes = fNotes
+                this.notesPinned = fNotes.filter(note => note.isPinned)
+                this.notesOther = fNotes.filter(note => !note.isPinned)
+
             })
         },
         deleteNote(noteId){
             notesService.remove(noteId)
                 .then(() => {
-                    const idx1 = this.notesPinned.findIndex(note => note.id === noteId)
-                    this.notesPinned.splice(idx1, 1)
-                    const idx2 = this.notesOther.findIndex(note => note.id === noteId)
-                    this.notesOther.splice(idx2, 1)
+                    notesService.query()
+                    .then(notes => {
+                const regex = new RegExp(this.filterBy,'i')
+                let fNotes = notes.filter(note => regex.test(note.info.title))
+       
+                this.allNotes = fNotes
+                this.notesPinned = fNotes.filter(note => note.isPinned)
+                this.notesOther = fNotes.filter(note => !note.isPinned)
                     
                     const msg = {
                         txt: `Note ${noteId} deleted...`,
                         type: 'success',
                     }
                     eventBus.emit('show-msg', msg)
-                })
-            notesService.query()
-                .then(notes => {this.allNotes = notes})
+                })})
         },
         pinNote(noteId){
             let noteToPin 
@@ -88,6 +92,33 @@ export default {
         filterNotes(filter){
             console.log(filter);
             this.filterBy = filter
+            const regex = new RegExp(this.filterBy,'i')
+            this.notesPinned = this.notesPinned.filter(note => regex.test(note.info.title ||
+                                                                          note.info.label ||
+                                                                          note.info.txt))
+            this.notesOther = this.notesOther.filter(note => regex.test(note.info.title ||
+                                                                        note.info.label ||
+                                                                        note.info.txt))
+        },
+        changeNoteColor(inf){
+            console.log(inf);
+            notesService.get(inf.id)
+            .then(note => {
+                note.style = {backgroundColor: inf.color}
+                console.log(note);
+                notesService.save(note)
+                .then(
+                notesService.query()
+                    .then(notes => {
+                        console.log(notes);
+                        const regex = new RegExp(this.filterBy,'i')
+                        let fNotes = notes.filter(note => regex.test(note.info.title))
+       
+                        this.allNotes = fNotes
+                        this.notesPinned = fNotes.filter(note => note.isPinned)
+                        this.notesOther = fNotes.filter(note => !note.isPinned)
+                    }))
+            }) 
         }
     },
     components:{

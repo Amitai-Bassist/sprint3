@@ -1,53 +1,64 @@
 .note-container {
-    display: grid;
     margin-top: 20px;
+    column-count: 4;
+    column-gap: 10px;
+    row-gap: 10px;
     
     /* grid-auto-flow: column; */
-    grid-template-columns: repeat(auto-fit, 300px);
+    /* grid-template-columns: repeat(auto-fit, 300px);
     grid-auto-flow: dense;
-    grid-gap: 19px;
+    grid-gap: 19px; */
 }
 
 .note{
     width: 300px;
+    break-inside: avoid;
     flex-wrap: wrap;
-    background-color: aqua;
-    /* height: max-content; */
     border-radius: 10%;
-    padding: 15px;
-    border: solid 1px;
+    padding: 40px;
+    height: max-content;
+    border: solid 1px #e0e0e0;
     display: grid;
-    grid-template-areas:  
+    /* grid-template-areas:  
     'pin'
     'content'
-    'note-buttens';
+    'note-buttens'; */
+    position: relative;
+    margin-bottom: 10px;
     
 }
 
 .note-div{
-    height: max-content;
-    
+    height: max-content;   
 }
 
-.note .pin{
-    grid-area: 'pin';
-}
-
-.note .content{
-    grid-area: 'content';
+.pin-div-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .note-btns{
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    
+    position: absolute;
+    bottom: 0;
 }
 
-textarea{
+
+.note-btn-txt{
+    position: absolute;
+    bottom: 5;
+}
+
+.note textarea{
     max-width: 260px;
+    resize: none;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
 }
 
 .note:hover{
-    box-shadow: 0px 0px 0px 2px rgba(171,166,166,0.75);
+    box-shadow: 0px 0px 0px 2px #e0e0e0;
     
     
 }
@@ -56,6 +67,8 @@ textarea{
     background-color: rgba(32, 125, 102, 0);
     border: none;
 }
+
+
 
 .add-note-section{
     width: 890px;
@@ -77,9 +90,26 @@ aside{
 }
 
 .colors-for-notes{
+    position:absolute;
+    bottom: 40px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: solid 1px #e0e0e0;
     z-index: 1;
     display: flex;
-    width: 300px;
+    /* width: 300px; */
+}
+
+.google-color{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.google-color:hover{
+    border: black solid 1px;
+
 }
 
 .aside-btn{

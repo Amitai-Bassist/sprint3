@@ -4,9 +4,9 @@ import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-
 export default {
     template: `
           <section @mouseover="isOver = true" @mouseleave="isOver = false" class="note note-txt">
-              <div v-if="isOver" class="flex">
-                <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click="pinNote"><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
+              <div v-if="isOver" class="pin-div-btn flex">
                 <div v-if="pin">pin note</div>
+                <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click="pinNote"><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
               </div>    
               <textarea name="" id="" cols="24" rows="10">{{info.txt}}</textarea>
               <note-buttens v-if="isOver" :id="id"></note-buttens>

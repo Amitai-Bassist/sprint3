@@ -2,8 +2,8 @@ import noteImg from '../cmps/note-img.cmp.js'
 import noteTodos from '../cmps/note-todos.cmp.js'
 import noteTxt from '../cmps/note-txt.cmp.js'
 import noteVideo from '../cmps/note-video.cmp.js'
-import colorsChose from './colors-chose.cmp.js'
 import { notesService } from "../services/note.service.js"
+import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export default {
     props: ['notesPinned','notesOther'],
@@ -16,7 +16,6 @@ export default {
                         :info="note.info" v-bind:style="bcgColor(note)" :id="note.id" >
                     </component>
                 </div>
-                <colors-chose class="colors-for-notes" ></colors-chose>
         </section>
         <h1>OTHERS</h1>
         <section class="note-container ">
@@ -25,13 +24,16 @@ export default {
                         :info="note.info" v-bind:style="bcgColor(note)" :id="note.id" >
                     </component>
                 </div>
-                <colors-chose class="colors-for-notes" ></colors-chose>
         </section>
     `,
     data() {
         return {
-            isOver: false
+            isOver: false,
+            userChoseColor:false
         }
+    },
+    created(){
+        
     },
     methods: {
         showBottons(ev){
@@ -51,7 +53,5 @@ export default {
         noteTodos,
         noteTxt,
         noteVideo,
-        colorsChose
-        
     }
 }
