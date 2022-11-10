@@ -10,8 +10,7 @@ export default {
     template:`
     <main class="note-app-main grid">
         <aside class="grid">
-            <!-- <router-link to="/notes/show-nots">Notes</router-link> -->
-            <button class="aside-btn">Notes</button>
+            <button class="aside-btn aside-active">Notes</button>
             <button class="aside-btn">Reminders</button>
             <button class="aside-btn">Archive</button>
             <button class="aside-btn">Bin</button>
