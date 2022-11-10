@@ -3,13 +3,15 @@ import noteButtens from '../cmps/note-buttens.cmp.js'
 export default {
     template: `
     <section @mouseover="isOver = true" @mouseleave="isOver = false" class="note note-img">
-        <div v-if="isOver">
+        <div v-if="isOver" class="pin flex">
             <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click=""><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
             <div v-if="pin">pin note</div>
         </div>
-        <h1>{{info.title}}</h1>
-        <img :src="imgUrl" alt="" />
-        <note-buttens v-if="isOver" ></note-buttens>
+        <div class="content">
+            <h1>{{info.title}}</h1>
+            <img :src="imgUrl" alt="" />
+        </div>
+        <note-buttens v-if="isOver" :id="id"></note-buttens>
     </section>
     `,
     data() {
@@ -19,7 +21,7 @@ export default {
         }
     },
     name: 'note-img',
-    props: ['info'],
+    props: ['info','id'],
     computed: {
         imgUrl(){
             return this.info.url

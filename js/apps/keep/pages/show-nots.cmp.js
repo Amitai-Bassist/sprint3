@@ -1,4 +1,5 @@
 import { notesService } from '../services/note.service.js'
+import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 import noteFilter from '../cmps/note-filter.cmp.js'
 import noteAdd from '../cmps/note-add.cmp.js'
@@ -23,6 +24,7 @@ export default {
             .then(notes => {
                 this.notes = notes
             })
+        eventBus.on('deleteNote', this.deleteNote)
     },
     methods: {
         addNote(){
@@ -30,6 +32,19 @@ export default {
             .then(notes => {
                 this.notes = notes
             })
+        },
+        deleteNote(noteId){
+            notesService.remove(noteId)
+                .then(() => {
+                    const idx = this.notes.findIndex(note => note.id === noteId)
+                    this.notes.splice(idx, 1)
+                    
+                    const msg = {
+                        txt: `Note ${noteId} deleted...`,
+                        type: 'success',
+                    }
+                    eventBus.emit('show-msg', msg)
+                })
         }
     },
     components:{

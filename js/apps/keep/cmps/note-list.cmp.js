@@ -8,10 +8,10 @@ import { notesService } from "../services/note.service.js"
 export default {
     props: ['notes'],
     template: `
-        <section class="note-container grid">
-                <div  v-for="(note, idx) in notes">
+        <section class="note-container ">
+                <div class="note-div"  v-for="(note, idx) in notes">
                     <component :is="note.type"  
-                        :info="note.info" v-bind:style="bcgColor(note)" :id="note.id" @deleteNote="deleteNote">
+                        :info="note.info" v-bind:style="bcgColor(note)" :id="note.id" >
                     </component>
                 </div>
                 <colors-chose class="colors-for-notes" ></colors-chose>
@@ -30,9 +30,7 @@ export default {
         bcgColor(note){
             return note.style
         },
-        deleteNote(notId){
-            notesService.remove(noteId)
-        }
+        
     },
     computed:{
         

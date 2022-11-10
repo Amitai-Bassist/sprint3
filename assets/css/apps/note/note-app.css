@@ -1,25 +1,55 @@
 .note-container {
+    display: grid;
     margin-top: 20px;
-    grid-template-columns: repeat(auto-fill,300px);
+    
+    /* grid-auto-flow: column; */
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-auto-flow: dense;
     grid-gap: 19px;
 }
 
 .note{
+    width: 300px;
+    flex-wrap: wrap;
     background-color: aqua;
-    height: 100%;
+    /* height: max-content; */
     border-radius: 10%;
     padding: 15px;
     border: solid 1px;
+    display: grid;
+    grid-template-areas:  
+    'pin'
+    'content'
+    'note-buttens';
+    
+}
+
+.note-div{
+    height: max-content;
+    
+}
+
+.note .pin{
+    grid-area: 'pin';
+}
+
+.note .content{
+    grid-area: 'content';
 }
 
 .note-btns{
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    
 }
 
-
+textarea{
+    max-width: 260px;
+}
 
 .note:hover{
     box-shadow: 0px 0px 0px 2px rgba(171,166,166,0.75);
+    
+    
 }
 
 .note-btn {

@@ -1,4 +1,4 @@
-
+import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export default {
     template: `
@@ -35,7 +35,7 @@ export default {
             
         },
         deleteNote(){
-            this.$emit('deleteNote', this.id)
+            eventBus.emit('deleteNote', this.id)
         }
     },
     components: {
