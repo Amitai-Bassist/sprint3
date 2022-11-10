@@ -8,7 +8,7 @@ export default {
                 <div v-if="pin">pin note</div>
                 <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click="pinNote"><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
               </div>    
-              <textarea name="" id="" cols="24" rows="10">{{info.txt}}</textarea>
+              <textarea name="" id="" cols="24" rows="8">{{info.txt}}</textarea>
               <note-buttens v-if="isOver" :id="id"></note-buttens>
           </section>
           `,

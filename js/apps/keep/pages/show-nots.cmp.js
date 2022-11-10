@@ -107,18 +107,25 @@ export default {
                 note.style = {backgroundColor: inf.color}
                 console.log(note);
                 notesService.save(note)
-                .then(
-                notesService.query()
-                    .then(notes => {
-                        console.log(notes);
-                        const regex = new RegExp(this.filterBy,'i')
-                        let fNotes = notes.filter(note => regex.test(note.info.title))
+            .then(notesService.query().then(notes => {
+                console.log(notes);
+                const regex = new RegExp(this.filterBy,'i')
+                let fNotes = notes.filter(note => regex.test(note.info.title))
        
-                        this.allNotes = fNotes
-                        this.notesPinned = fNotes.filter(note => note.isPinned)
-                        this.notesOther = fNotes.filter(note => !note.isPinned)
-                    }))
-            }) 
+                this.allNotes = fNotes
+                this.notesPinned = fNotes.filter(note => note.isPinned)
+                this.notesOther = fNotes.filter(note => !note.isPinned)
+                }))
+            })
+            notesService.query().then(notes => {
+                console.log(notes);
+                const regex = new RegExp(this.filterBy,'i')
+                let fNotes = notes.filter(note => regex.test(note.info.title))
+       
+                this.allNotes = fNotes
+                this.notesPinned = fNotes.filter(note => note.isPinned)
+                this.notesOther = fNotes.filter(note => !note.isPinned)
+                }) 
         }
     },
     components:{
