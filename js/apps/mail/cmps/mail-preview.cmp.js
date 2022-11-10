@@ -3,7 +3,7 @@ export default {
     props:['email'],
     template:`
         <div  @mouseleave="isMouseOver = false" @mouseover="isMouseOver = true" class="preview-email grid">
-            <div class="preview-email-star"><i @click="email.isStarred=!email.isStarred" class="fa fa-star-o" :class="{isStarred: email.isStarred}" aria-hidden="true"></i></div>
+            <div class="preview-email-star"><i @click="email.isStarred=!email.isStarred" class="fa fa-star" :class="{isStarred: email.isStarred}" aria-hidden="true"></i></div>
             <article @click="email.isRead=true" class="preview-email-contact grid" @click="showDetails(email)">
                 <div class="preview-email-from">{{ email.from }} </div>
                 <div class="preview-email-subject">{{ email.subject }} </div>
