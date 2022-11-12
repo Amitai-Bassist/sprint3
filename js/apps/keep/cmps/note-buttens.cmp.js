@@ -1,5 +1,6 @@
-import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+import { eventBus, } from "../../../services/event-bus.service.js"
 import colorsChose from './colors-chose.cmp.js'
+import moreOptions from './more-options.cmp.js'
 
 export default {
     template: `
@@ -11,9 +12,10 @@ export default {
         <div v-if="trash">trash</div>
     </section>
     <colors-chose v-if="showColors" class="colors-for-notes" :id="id" ></colors-chose>
+    <more-options v-if="showMore" :id="id" @closeMore="showMore=false"></more-options>
     <section class="note-btns grid">
-        <button @mouseover="more = true" @mouseleave="more = false" class="note-btn" @click=""><i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i></button>
-        <button @mouseover="archive = true" @mouseleave="archive = false" class="note-btn" @click=""><i class="fa fa-archive fa-2x" aria-hidden="true"></i></button>
+        <button @mouseover="more = true" @mouseleave="more = false" class="note-btn" @click="showMore=true"><i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i></button>
+        <button @mouseover="archive = true" @mouseleave="archive = false" class="note-btn" @click="addToArchive"><i class="fa fa-archive fa-2x" aria-hidden="true"></i></button>
         <button @mouseover="add = true" @mouseleave="add = false" class="note-btn" @click=""><i class="fa fa-picture-o fa-2x" aria-hidden="true"></i></button>
         <button @mouseover="color = true" @mouseleave="color = false" class="note-btn" @click="showColors = true"><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i></button>
         <button @mouseover="trash = true" @mouseleave="trash = false" class=" note-btn" @click="deleteNote"><i class=" fa fa-trash fa-2x" aria-hidden="true"></i></button>
@@ -30,16 +32,21 @@ export default {
             color:false,
             trash:false,
             showColors:false,
+            showMore:false,
             
         }
     },
     methods: {
         deleteNote(){
             eventBus.emit('deleteNote', this.id)
+        },
+        addToArchive(){
+            eventBus.emit('addToArchive', this.id)
         }
     },
     components: {
-        colorsChose 
+        colorsChose,
+        moreOptions
     }
 }
 

@@ -10,18 +10,20 @@ export default {
     template:`
     <main class="note-app-main grid">
         <aside class="grid">
-            <button class="aside-btn aside-active">Notes</button>
-            <button class="aside-btn">Reminders</button>
-            <button class="aside-btn">Archive</button>
-            <button class="aside-btn">Bin</button>
+            <button class="aside-btn aside-active" @click="asideChose='all'">Notes</button>
+            <button class="aside-btn" @click="asideChose='remined'">Reminders </button>
+            <button class="aside-btn" @click="asideChose='archive'">Archive</button>
+            <button class="aside-btn" @click="asideChose='bin'">Bin</button>
         </aside>
-        <router-view />
+        <router-view :asideChose="asideChose"/>
     </main>
     `,
     name: 'note-index',
     data() {
         return {
-            notes: []
+            notes: [],
+            asideChose: 'all',
+            
         }
     },
     created(){

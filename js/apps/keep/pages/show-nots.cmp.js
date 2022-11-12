@@ -4,22 +4,33 @@ import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-
 import noteFilter from '../cmps/note-filter.cmp.js'
 import noteAdd from '../cmps/note-add.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
+import noteArchive from '../cmps/note-archive.cmp.js'
+import noteBin from '../cmps/note-bin.cmp.js'
+import noteToRemind from '../cmps/note-to-remind.cmp.js'
 
 export default {
     template:`
     <section class="note-app">
-            <note-filter></note-filter>
-            <note-add @saved="addNote"></note-add>
-            <note-list :notesPinned="notesPinned" :notesOther="notesOther"></note-list>
-    
+            <note-filter v-if="userSectionChose('all')"></note-filter>
+            <note-add v-if="userSectionChose('all')" @saved="addNote"></note-add>
+            <note-list v-if="userSectionChose('all')" :notesPinned="notesPinned" :notesOther="notesOther"></note-list>
+            <note-bin :bin="bin" v-if="userSectionChose('bin')"></note-bin>
+            <note-archive :archive="archive" v-if="userSectionChose('archive')"></note-archive>
+            <note-to-remind :reminder="reminder" v-if="userSectionChose('remined')"></note-to-remind>
         </section>
     `,
+    props:['asideChose'],
     data() {
         return {
             allNotes: [],
             notesPinned: [],
             notesOther: [],
-            filterBy: ''
+            filterBy: '',
+            bin: [],
+            reminder: [],
+            archive: [],
+            
+            
         }
     },
     created(){
@@ -29,12 +40,19 @@ export default {
                 this.allNotes = notes
                 this.notesPinned = notes.filter(note => note.isPinned)
                 this.notesOther = notes.filter(note => !note.isPinned)
+                this.reminder = notes.filter(note => note.toRemined)
+                this.archive = notes.filter(note => note.toArchive)
+                this.bin = notes.filter(note => note.toBin)
+                
             })
         
         eventBus.on('deleteNote', this.deleteNote)
         eventBus.on('pin-note', this.pinNote)
         eventBus.on('filter-notes', this.filterNotes)
         eventBus.on('change-note-color', this.changeNoteColor)
+        eventBus.on('duplicate-note', this.duplicateNote)
+        eventBus.on('add-to-reminder', this.addToReminder)
+        eventBus.on('addToArchive', this.addToArchive)
     },
     methods: {
         addNote(){
@@ -76,6 +94,7 @@ export default {
                 console.log(noteToPin);
                 noteToPin.isPinned = !noteToPin.isPinned
                 if (noteToPin.isPinned){
+                    console.log(this.notesPinned);
                     this.notesPinned.unshift(noteToPin)
                     const idx2 = this.notesOther.findIndex(note => note.id === noteId)
                     this.notesOther.splice(idx2, 1)
@@ -127,11 +146,43 @@ export default {
                 this.notesPinned = fNotes.filter(note => note.isPinned)
                 this.notesOther = fNotes.filter(note => !note.isPinned)
                 }) 
+        },
+        duplicateNote(id){
+            notesService.get(id)
+            .then((note)=> {
+                const dupNote = note
+                dupNote.id = ''
+                if (note.isPinned) this.notesPinned.unshift(note)
+                else this.notesOther.unshift(note)
+                notesService.save(dupNote)
+            })
+        },
+        addToReminder(id){
+            notesService.get(id)
+            .then((note)=> {
+                note.toRemined = true 
+                notesService.save(note)
+                this.reminder.unshift(note)
+            })
+        },
+        userSectionChose(chose){
+            return this.asideChose === chose
+        },
+        addToArchive(){
+            notesService.get(id)
+            .then((note)=> {
+                note.toArchive = true 
+                notesService.save(note)
+                this.archive.unshift(note)
+            })
         }
     },
     components:{
         noteFilter,
         noteAdd,
-        noteList
+        noteList,
+        noteArchive,
+        noteBin,
+        noteToRemind
     },
 }

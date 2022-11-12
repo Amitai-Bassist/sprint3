@@ -33,7 +33,7 @@ export default {
         }
     },
     created(){
-        
+       
     },
     methods: {
         showBottons(ev){

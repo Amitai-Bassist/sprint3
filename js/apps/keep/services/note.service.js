@@ -31,7 +31,10 @@ function getFirstNotes(){
             },
             style: { 
                 backgroundColor: "rgb(242 139 130)" 
-            } 
+            },
+            toRemined:false,
+            toArchive:false,
+            toBin:false, 
         }, 
         { 
             id: "n101", 
@@ -43,7 +46,10 @@ function getFirstNotes(){
             },
             style: { 
                 backgroundColor: "rgb(167 255 235)" 
-            }
+            },
+            toRemined:false,
+            toArchive:false,
+            toBin:false,
         }, 
         { 
             id: "n102", 
@@ -55,7 +61,10 @@ function getFirstNotes(){
             }, 
             style: { 
                 backgroundColor: "rgb(255 255 255)" 
-            } 
+            },
+            toRemined:true,
+            toArchive:false,
+            toBin:false, 
         }, 
         { 
             id: "n104", 
@@ -70,7 +79,10 @@ function getFirstNotes(){
             },
             style: { 
                 backgroundColor: "rgb(255 244 117)" 
-            }
+            },
+            toRemined:false,
+            toArchive:true,
+            toBin:false,
         },
         { 
             id: "n105", 
@@ -82,7 +94,10 @@ function getFirstNotes(){
             }, 
             style: { 
                 backgroundColor: "rgb(255 244 117)" 
-            } 
+            },
+            toRemined:false,
+            toArchive:false,
+            toBin:false, 
         },
         { 
             id: "n106", 
@@ -95,7 +110,10 @@ function getFirstNotes(){
             },
             style: { 
                 backgroundColor: "rgb(230 201 168)" 
-            }
+            },
+            toRemined:true,
+            toArchive:false,
+            toBin:false,
         }, 
         { 
             id: "n109", 
@@ -107,7 +125,25 @@ function getFirstNotes(){
             },
             style: { 
                 backgroundColor: "rgb(167 255 235)" 
-            }
+            },
+            toRemined:false,
+            toArchive:false,
+            toBin:false,
+        },
+        { 
+            id: "n112", 
+            type: "note-video", 
+            isPinned: true,
+            info: { 
+                url: "https://www.youtube.com/embed/jZC8HkQPupI", 
+                title: "Israel Navy officer course" 
+            }, 
+            style: { 
+                backgroundColor: "rgb(255 255 255)" 
+            },
+            toRemined:false,
+            toArchive:false,
+            toBin:false, 
         }
     ]
     return notes

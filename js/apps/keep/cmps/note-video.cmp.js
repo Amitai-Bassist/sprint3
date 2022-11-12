@@ -9,7 +9,7 @@ export default {
             <button @mouseover="pin = true" @mouseleave="pin = false" class="pin-btn note-btn" @click="pinNote"><i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i></button>
         </div>
         <h1>{{info.title}}</h1>
-        <video src="videoUrl"></video>
+        <iframe width="220" height="124" :src="info.url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <note-buttens v-if="isOver" :id="id"></note-buttens>
     </section>
     `,

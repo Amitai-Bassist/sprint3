@@ -26,3 +26,6 @@ body{
     font-family: Roboto, sans-serif;
     margin: 0;
 }
+.home-page, .email-app, .about-page{
+    min-height: 87vh;
+}
