@@ -10,10 +10,10 @@ export default {
     template:`
     <main class="note-app-main grid">
         <aside class="grid">
-            <button class="aside-btn aside-active" @click="asideChose='all'">Notes</button>
-            <button class="aside-btn" @click="asideChose='remined'">Reminders </button>
-            <button class="aside-btn" @click="asideChose='archive'">Archive</button>
-            <button class="aside-btn" @click="asideChose='bin'">Bin</button>
+            <button class="aside-btn" v-bind:class="{'aside-active': asideChose==='all'}"  @click="asideChose='all'">Notes</button>
+            <button class="aside-btn" v-bind:class="{'aside-active': asideChose==='remined'}" @click="asideChose='remined'">Reminders </button>
+            <button class="aside-btn" v-bind:class="{'aside-active': asideChose==='archive'}" @click="asideChose='archive'">Archive</button>
+            <button class="aside-btn" v-bind:class="{'aside-active': asideChose==='bin'}" @click="asideChose='bin'">Bin</button>
         </aside>
         <router-view :asideChose="asideChose"/>
     </main>
@@ -23,6 +23,7 @@ export default {
         return {
             notes: [],
             asideChose: 'all',
+            notes:true
             
         }
     },
@@ -31,6 +32,9 @@ export default {
             .then(notes => {
                 this.notes = notes
             })
+    },
+    methods:{
+        
     },
     components:{
         noteFilter,

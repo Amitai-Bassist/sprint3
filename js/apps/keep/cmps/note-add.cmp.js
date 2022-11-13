@@ -3,11 +3,17 @@ import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-
 import colorsChose from './colors-chose.cmp.js'
 import noteButtens from '../cmps/note-buttens.cmp.js'
 import noteAddTxt from '../cmps/note-add-txt.cmp.js'
+import noteAddTodos from '../cmps/note-add-todos.cmp.js'
+import noteAddImg from '../cmps/note-add-img.cmp.js'
+import noteAddVideo from '../cmps/note-add-video.cmp.js'
 
 export default {
     template: `
     <section  class="add-note-section" :style="stylecoloruser">
         <note-add-txt v-if="isActive === 'txt'" :noteToEdit="noteToEdit" @isOver="isOver = true" @userInput="userInput"></note-add-txt>
+        <note-add-todos v-if="isActive === 'todo'" :noteToEdit="noteToEdit" @isOver="isOver = true" @userInput="userInput"></note-add-todos>
+        <note-add-img v-if="isActive === 'img'" :noteToEdit="noteToEdit" @isOver="isOver = true" @userInput="userInput"></note-add-img>
+        <note-add-video v-if="isActive === 'video'" :noteToEdit="noteToEdit" @isOver="isOver = true" @userInput="userInput"></note-add-video>
         <div>
             <button @click="isActive= 'txt'" class="add-note-btn" :class="active('txt')"><i class="fa fa-comment-o fa-2x" aria-hidden="true"></i></button>
             <button @click="isActive= 'todo'" class="add-note-btn" :class="active('todo')"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i></button>
@@ -89,6 +95,9 @@ export default {
         noteButtens,
         colorsChose,
         noteAddTxt,
+        noteAddTodos,
+        noteAddImg,
+        noteAddVideo
     }
     
 }

@@ -7,6 +7,7 @@ import mailCompose from './mail-compose.cmp.js'
 
 export default {
     template: `
+    <img src="assets/img/Gmail_icon_(2020).svg.png" class="icon-logo gmail-icon" alt="" />
     <section class="email-app">
         <div class="email-app-filter-container">
             <mail-filter @upDateSearchTxt="upDateSearchTxt" @filter="setFilter" :emails="emails"/>

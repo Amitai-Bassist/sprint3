@@ -5,19 +5,188 @@
     src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 }
 
-.note-container {
-    margin-top: 20px;
-    column-count: 4;
-    column-gap: 10px;
-    row-gap: 10px;
-    margin-bottom: 15px;
-    width: 1230px;
-    
-    /* grid-auto-flow: column; */
-    /* grid-template-columns: repeat(auto-fit, 300px);
-    grid-auto-flow: dense;
-    grid-gap: 19px; */
+aside{
+    padding-top: 25px;
+    grid-template-rows: 90px 90px 90px 90px;
 }
+
+
+.aside-btn{
+    background-color: white;
+    border: none;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    text-align: start;
+    
+}
+
+/* FOR MOBILE ONLY  */
+
+@media (max-width: 550px) {
+    .note-container {
+        margin-top: 10px;
+        column-count: 1;
+        column-gap: 10px;
+        row-gap: 10px;
+        margin-bottom: 15px;
+        width: 350px;
+    }
+
+    .aside-btn{
+
+        min-width: 102px;
+        height:70px;
+        padding-left: 7px;
+        font-size: 20px;  
+    }
+
+    .add-note-section{
+        margin-top: 25px;
+        margin-bottom: 5px;
+        padding: 5px;
+        padding-bottom: 15px;
+        display: grid;
+        border-radius: 10px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        width: 310px;
+        text-align: center;
+        border: solid 1px rgb(181, 176, 176);
+    }
+}
+
+@media (min-width: 540px) {
+    .add-note-section{
+        margin-top: 25px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        padding: 5px;
+        padding-bottom: 15px;
+        display: grid;
+        border-radius: 10px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        width: 310px;
+        text-align: center;
+        border: solid 1px rgb(181, 176, 176);
+    }
+    
+    .note-app{
+        padding-left: 60px;
+        width: 310px;
+        min-height: 90vh;
+}
+}
+
+/* SMALL */
+@media (min-width: 640px) {
+    .note-container {
+        margin-top: 10px;
+        column-count: 1;
+        column-gap: 10px;
+        row-gap: 10px;
+        margin-bottom: 15px;
+        width: 350px;
+    }
+
+    .aside-btn{
+
+        max-width: 102px;
+        height:70px;
+        padding-left: 7px;
+        font-size: 20px;
+        
+    }
+    
+    .note-app{
+        padding-left: 30px;
+        left: 310px;
+        min-height: 90vh;
+    }
+
+    .add-note-section{
+        margin-top: 25px;
+        margin-bottom: 5px;
+        padding: 5px;
+        padding-bottom: 15px;
+        display: grid;
+        border-radius: 10px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        width: 460px;
+    
+        text-align: center;
+        border: solid 1px rgb(181, 176, 176);
+}
+    
+}
+
+@media (min-width: 840px) {
+    .aside-btn{
+        min-width: 139px;
+        max-width: 139px;
+        height:70px;
+        padding-left: 10px;
+        font-size: 22px;
+        
+    }
+}
+
+/* MEDIUM */
+@media (min-width: 930px) {
+    .note-container {
+        margin-top: 20px;
+        column-count: 2;
+        column-gap: 10px;
+        row-gap: 10px;
+        margin-bottom: 15px;
+        width: 610px;
+    }
+
+    .aside-btn{
+        min-width: 139px;
+        max-width: 139px;
+        height:70px;
+        padding-left: 10px;
+        font-size: 30px;
+        
+    }
+}
+
+/* LARGE */
+@media (min-width: 1245px) {
+
+    .note-container {
+        margin-top: 20px;
+        column-count: 3;
+        column-gap: 10px;
+        row-gap: 10px;
+        margin-bottom: 15px;
+        width: 920px;
+    }
+
+    .aside-btn{
+        min-width: 259px;
+        max-width: 259px;
+        height:70px;
+        padding-left: 50px;
+        font-size: 30px;    
+    }
+    
+}
+
+/*EXTRA LARGE */
+@media (min-width: 1550px) {
+    .note-container {
+        margin-top: 20px;
+        column-count: 4;
+        column-gap: 10px;
+        row-gap: 10px;
+        margin-bottom: 15px;
+        width: 1230px;
+    }
+}
+
 
 button{
     font-family: Roboto, sans-serif;
@@ -81,10 +250,25 @@ button{
     background-color: aliceblue;
     position: absolute;
     bottom: 45px;
-    width: 60px;
+    width: 80px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+}
+.more-options button{
+    background-color: white;
+    text-align: center;
+    width: 80px;
+    margin: 0;
+    padding: 0;
+}
+
+.more-options button:hover{
+    width: 80px;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 .note textarea{
@@ -115,20 +299,6 @@ button{
 
 
 
-.add-note-section{
-    margin-top: 25px;
-    margin-bottom: 5px;
-    padding: 5px;
-    padding-bottom: 15px;
-    display: grid;
-    border-radius: 10px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    width: 460px;
-    
-    text-align: center;
-    border: solid 1px rgb(181, 176, 176);
-}
 
 .add-note-section form{
     width: 200px;
@@ -172,16 +342,6 @@ button{
     
 }
 
-.note-app{
-    padding-left: 30px;
-    left: 310px;
-    min-height: 90vh;
-}
-
-aside{
-    padding-top: 25px;
-    grid-template-rows: 90px 90px 90px 90px;
-}
 
 .colors-for-notes{
     position:absolute;
@@ -207,19 +367,6 @@ aside{
 
 }
 
-.aside-btn{
-    min-width: 259px;
-    max-width: 259px;
-    height:70px;
-    background-color: white;
-    border: none;
-    border-bottom-right-radius: 50px;
-    border-top-right-radius: 50px;
-    text-align: start;
-    padding-left: 50px;
-    font-size: 30px;
-    
-}
 
 
 
@@ -235,7 +382,7 @@ aside{
 
 .search-filter-notes{
     position: absolute;
-    top: -1%;
+    top: 0;
     width: 250px;
     height:48px ;
     text-align: center;
@@ -246,10 +393,23 @@ aside{
 .search-filter-notes button, input{
     background-color: rgb(241 243 244);
     border: none;
-    /* height:48px ; */
+    min-height: 30px;
+    padding-top: 10px;
 
 }
 
 input:focus{
     
+}
+
+.menu-bar{
+    z-index: 3;
+    background-color: white;
+}
+
+.icon-logo{
+    position: absolute;
+    left: 103px;
+    top: 0;
+    background-color: rgb(190 191 190);
 }

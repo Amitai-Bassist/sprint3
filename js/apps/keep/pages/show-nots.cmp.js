@@ -68,6 +68,10 @@ export default {
             })
         },
         deleteNote(noteId){
+            notesService.get(noteId)
+                .then((note)=>{
+                    this.bin.unshift(note)    
+                })
             notesService.remove(noteId)
                 .then(() => {
                     notesService.query()
@@ -78,12 +82,12 @@ export default {
                 this.allNotes = fNotes
                 this.notesPinned = fNotes.filter(note => note.isPinned)
                 this.notesOther = fNotes.filter(note => !note.isPinned)
-                    
-                    const msg = {
-                        txt: `Note ${noteId} deleted...`,
-                        type: 'success',
-                    }
-                    eventBus.emit('show-msg', msg)
+                const msg = {
+                    txt: `Note ${noteId} deleted...`,
+                    type: 'success',
+                }
+                eventBus.emit('show-msg', msg)
+                
                 })})
         },
         pinNote(noteId){
@@ -120,32 +124,22 @@ export default {
                                                                                      note.info.txt || note.info.todos[0].txt ||
                                                                                      note.type))
         },
-        changeNoteColor(inf){
-            console.log(inf);
+        changeNoteColor(inf){            
             notesService.get(inf.id)
             .then(note => {
                 note.style = {backgroundColor: inf.color}
-                console.log(note);
+                if (note.isPinned){
+                    this.notesPinned.map((curNote) => {
+                        if (curNote.id === note.id) curNote.style.backgroundColor = inf.color
+                    })
+                }else{
+                    this.notesOther.map((curNote) => {
+                        if (curNote.id === note.id) curNote.style.backgroundColor = inf.color
+                    })
+                }
                 notesService.save(note)
-            .then(notesService.query().then(notes => {
-                console.log(notes);
-                const regex = new RegExp(this.filterBy,'i')
-                let fNotes = notes.filter(note => regex.test(note.info.title))
-       
-                this.allNotes = fNotes
-                this.notesPinned = fNotes.filter(note => note.isPinned)
-                this.notesOther = fNotes.filter(note => !note.isPinned)
-                }))
             })
-            notesService.query().then(notes => {
-                console.log(notes);
-                const regex = new RegExp(this.filterBy,'i')
-                let fNotes = notes.filter(note => regex.test(note.info.title))
-       
-                this.allNotes = fNotes
-                this.notesPinned = fNotes.filter(note => note.isPinned)
-                this.notesOther = fNotes.filter(note => !note.isPinned)
-                }) 
+            
         },
         duplicateNote(id){
             notesService.get(id)
@@ -155,6 +149,11 @@ export default {
                 if (note.isPinned) this.notesPinned.unshift(note)
                 else this.notesOther.unshift(note)
                 notesService.save(dupNote)
+                const msg = {
+                    txt: `Note was duplicated...`,
+                    type: 'success',
+                }
+                eventBus.emit('show-msg', msg)
             })
         },
         addToReminder(id){
@@ -163,17 +162,27 @@ export default {
                 note.toRemined = true 
                 notesService.save(note)
                 this.reminder.unshift(note)
+                const msg = {
+                    txt: `Note ${note.id} added to Reminder`,
+                    type: 'success',
+                }
+                eventBus.emit('show-msg', msg)
             })
         },
         userSectionChose(chose){
             return this.asideChose === chose
         },
-        addToArchive(){
+        addToArchive(id){
             notesService.get(id)
             .then((note)=> {
                 note.toArchive = true 
                 notesService.save(note)
                 this.archive.unshift(note)
+                const msg = {
+                    txt: `Note ${note.id} added to Archive`,
+                    type: 'success',
+                }
+                eventBus.emit('show-msg', msg)
             })
         }
     },

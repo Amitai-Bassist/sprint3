@@ -144,6 +144,42 @@ function getFirstNotes(){
             toRemined:false,
             toArchive:false,
             toBin:false, 
+        },
+        { 
+            id: "n204", 
+            type: "note-todos", 
+            isPinned: true,
+            info: { 
+                label: "Shoping list", 
+                todos: [ 
+                    { txt: "milk", doneAt: null }, 
+                    { txt: "solt", doneAt: 187111111 } 
+                ] 
+            },
+            style: { 
+                backgroundColor: "rgb(255 244 117)" 
+            },
+            toRemined:false,
+            toArchive:true,
+            toBin:false,
+        },
+        { 
+            id: "n304", 
+            type: "note-todos", 
+            isPinned: false,
+            info: { 
+                label: "people to call", 
+                todos: [ 
+                    { txt: "mom", doneAt: null }, 
+                    { txt: "my wife", doneAt: 187111111 } 
+                ] 
+            },
+            style: { 
+                backgroundColor: "rgb(255 244 117)" 
+            },
+            toRemined:false,
+            toArchive:true,
+            toBin:false,
         }
     ]
     return notes

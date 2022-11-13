@@ -1,5 +1,6 @@
 @import './cmps/header.css';
 @import './cmps/user-msg.css';
+@import './cmps/home-page.css';
 @import './apps/note/note-app.css';
 @import './base/base.css';
 @import './base/forms.css';
@@ -26,6 +27,10 @@ body{
     font-family: Roboto, sans-serif;
     margin: 0;
 }
-.home-page, .email-app, .about-page{
+.email-app, .about-page{
     min-height: 87vh;
+}
+
+.home-page{
+    min-height: 80vh;
 }
